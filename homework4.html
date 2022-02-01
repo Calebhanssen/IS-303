@@ -54,7 +54,7 @@ NCAA Women's Soccer Tournament
     var teamWins = 0;
     var teamLosses = 0;
     var winningPercentage = (teamWins / teamGames);
-    var myRecord = (teamWins + "-" + teamLosses);
+    var myRecord;
 
     // For loop 
     if (teamGames > 0) {
@@ -66,32 +66,31 @@ NCAA Women's Soccer Tournament
         var opponentScore = Math.floor(Math.random() * 11);
 
         // While there is a tie
-        while (myScore = opponentScore) {
+        while (myScore === opponentScore) {
           myScore = Math.floor(Math.random() * 11);
           opponentScore = Math.floor(Math.random() * 11);
         }
 
-
         // Keep track of wins
         if (myScore > opponentScore)
-          teamWins + 1
+          teamWins++
         else if (myScore < opponentScore)
-          teamLosses + 1
+          teamLosses++
 
 
       }
     }
 
+    myRecord = (teamWins + "-" + teamLosses);
 
-
-
-    // // text based on winning percentage
-    // if (winningPercentage) >= .75
-    // alert(myRecord + '\n' + "NCAA Women's Soccer Tournament")
-    // else if (winningPercentage) >= .50 and < .75
-    // alert(myRecord + '\n' + "Alternate Candidate for Covid")
-    // else
-    //   alert(myRecord + '\n' + "See you next year")
+    // text based on winning percentage
+    if (winningPercentage >= .75) {
+      alert(myRecord + '\n' + "NCAA Women's Soccer Tournament")
+    } else if (winningPercentage >= .50 && winningPercentage < .75) {
+      alert(myRecord + '\n' + "Alternate Candidate for Covid")
+    } else {
+      alert(myRecord + '\n' + "See you next year")
+    }
   </script>
 </body>
 
