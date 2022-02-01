@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    let asNames = [];
+    let iNumNames;
+
+    iNumNames = parseInt(prompt("How many names?"))
+
+    for (let iCount = 0; iCount < iNumNames; iCount++) {
+      sName = prompt("Enter the name in the position" + (iCount + 1));
+      asNames.push(sName);
+    }
+
+    alert(asNames);
+  </script>
+</body>
+
+</html>
