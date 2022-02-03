@@ -9,12 +9,28 @@
 </head>
 
 <body>
-  <h1>Welsome to the thunderdome</h1>
+  <h1>Welcome to the thunderdome</h1>
   <button type="button" onclick="showData()">Click Me</button>
   <script>
-    function showData() {
+    function showData()
 
+    {
+      //Create an array to store names 
+      let asNames = [];
 
+      //ask the user for how many names
+      let iNum;
+      iNum = parseInt(prompt("How many names?"));
+
+      //loop that loads the array
+      for (let iCount = 0; iCount < iNum; iCount++) {
+        asNames.push(prompt("Enter a name:"))
+
+      }
+
+      asNames.sort();
+      console.log(asNames);
+      alert(asNames)
     }
   </script>
 </body>
