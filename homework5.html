@@ -1,0 +1,64 @@
+<!-- 
+    Caleb Hanssen 
+    Section 5
+    Homework #5 (array of soccer teams)
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Fifth JavaScript</title>
+</head>
+
+<body>
+  <script>
+    // define variable and  create array 
+    let iNumTeams;
+    let asNames = [];
+    let aiTeamWins = [];
+    let iMaxPlace = 0
+    let iMaxValue = 0
+    let sOutput = "";
+
+
+    // Ask how many teams
+    iNumTeams = parseInt(prompt("How many teams?"));
+
+    // if user enters nan 
+    if (isNaN(iNumTeams)) {
+      alert("No teams to display");
+    }
+
+    // Team names and their winning amount 1-25
+    else {
+      for (let iCount = 0; iCount < iNumTeams; iCount = iCount + 1) {
+        asNames[iCount] = prompt("What is team " + (iCount + 1) + "'s name");
+
+        aiTeamWins[iCount] = Math.floor(Math.random() * 26);
+      }
+
+      // assign wins to team names
+      for (let iCount = 0; iCount < iNumTeams; iCount = iCount + 1) {
+        if (aiTeamWins[iCount] > iMaxValue) {
+          iMaxValue = aiTeamWins[iCount];
+          iMaxPlace = asNames[iCount];
+        }
+      }
+
+      // define output for team record
+      for (let iCount = 0; iCount < iNumTeams; iCount = iCount + 1) {
+        sOutput = (sOutput + asNames[iCount] + " " + aiTeamWins[iCount] + "-" + (25 - aiTeamWins[iCount]) + '\n');
+      }
+
+
+      //show output
+      alert([iMaxPlace] + " had the most wins with a record of " + [iMaxValue] + "-" + (25 - [iMaxValue]));
+      alert(sOutput);
+    }
+  </script>
+</body>
+
+</html>
