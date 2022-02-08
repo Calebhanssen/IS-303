@@ -9,15 +9,22 @@
 </head>
 
 <body>
-  <p is="output">goodbye</p>
+  <p id="output">goodbye</p>
   <script>
     let aiValues = [200, 10, 50, 2, 1, 100];
 
-    aiValues.sort()
+    // aiValues.sort()
 
-    console.log(aiValues);
+    aiValues.sort(function (a, b) {
+      if (a > b)
+        return 1;
+      else if (a < b)
+        return -1;
+      else
+        return 0;
+    });
 
-    //document.getElementById("output").innerHTML = aiValues;
+    document.getElementById("output").innerHTML = aiValues;
   </script>
 
 </body>
