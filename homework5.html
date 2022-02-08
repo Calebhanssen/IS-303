@@ -1,7 +1,7 @@
 <!-- 
     Caleb Hanssen 
     Section 5
-    Homework #5 (array of soccer teams)
+    Homework #5 (Program that prompts users to enter # of teams and their names. Then uses an array to gather teams and their record, and diplays the ending tally)
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -27,12 +27,12 @@
     // Ask how many teams
     iNumTeams = parseInt(prompt("How many teams?"));
 
-    // if user enters nan 
+    // if user enters NaN 
     if (isNaN(iNumTeams)) {
       alert("No teams to display");
     }
 
-    // Team names and their winning amount 1-25
+    // Team names and their winning amount 0-25
     else {
       for (let iCount = 0; iCount < iNumTeams; iCount = iCount + 1) {
         asNames[iCount] = prompt("What is team " + (iCount + 1) + "'s name");
