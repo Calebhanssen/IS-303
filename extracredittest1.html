@@ -1,0 +1,68 @@
+<!-- 
+    Caleb Hanssen 
+    Section 5
+    Extra Credit for Test 1 (Bubble sort for asTeams and aiWins, with the output in color)
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <p id="Colors">goodbye</p>
+
+  <script>
+    // Declare array variables 
+    let asTeams = ["BYU", "Gonzaga", "Portland", "Pepperdine"];
+    let aiWins = [23, 27, 9, 15];
+
+    // Declare holding variables
+    let sHoldTeams;
+    let iHoldWins;
+    let sOutput = "";
+
+    // Bubble sort to put the teams with the highest wins in descending order
+    for (let iOuter = 0; iOuter < (aiWins.length); iOuter++) {
+      for (let iInner = iOuter + 1; iInner < aiWins.length; iInner++) {
+        if (aiWins[iOuter] < aiWins[iInner]) {
+
+          //holding the larger value,
+          sHoldTeams = asTeams[iInner];
+          iHoldWins = aiWins[iInner];
+
+          //smaller value is over writing the larger value
+          asTeams[iInner] = asTeams[iOuter];
+          aiWins[iInner] = aiWins[iOuter];
+
+          //reinputting the held values
+          asTeams[iOuter] = sHoldTeams;
+          aiWins[iOuter] = iHoldWins;
+        }
+      }
+    }
+
+    // Assign Color to corresponding scores 
+    for (let iCount = 0; iCount < aiWins.length; iCount++) {
+      if (aiWins[iCount] > 20) {
+        sOutput = sOutput + '<p style="color:blue;">' +
+          asTeams[iCount] + " - " + aiWins[iCount] + "</p>";
+      } else if (aiWins[iCount] <= 20 && aiWins[iCount] > 14) {
+        sOutput = sOutput + '<p style="color:green;">' +
+          asTeams[iCount] + " - " + aiWins[iCount] + "</p>";
+      } else {
+        sOutput = sOutput + '<p style="color:red;">' +
+          asTeams[iCount] + " - " + aiWins[iCount] + "</p>";
+      }
+    }
+
+    //DOM receiving and putting the colors and numbers on the page
+    document.getElementById("Colors").innerHTML = sOutput
+  </script>
+</body>
+
+</html>
