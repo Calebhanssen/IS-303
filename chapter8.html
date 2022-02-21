@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // // Write a program that prompts the user to enter in the number of teams and the
+    // //  number of games played per team. For each game played by each team, you will 
+    // // enter the team score and the opponent's score. You will then determine if the current 
+    // // team won the game and add that to the wins. Once that team's games have been entered, you
+    // //  will calculate the win/loss percentage by using the formula: wins/total number of games.
+    // //  Then display the team name that had the highest win/loss percentage along with their percentage.
+    // //  You can multiply the percentage by 100 to make it look more appealing.
+    // var iTeamCnt; //how many teams
+    // var iGameCnt; // how many games
+    // var sTeamName; // team name
+    // var iWinCount; // team wins
+    // var iScore1; // your score
+    // var iScore2; // opponent score
+    // var sHighTeam; // team with highest percent
+    // var iHighPct = 0; // highest percent
+    // var iTeamPct; // calc. team pct
+
+    // iTeamCnt = parseInt(prompt("How many teams? "));
+
+    // for (var iTCount = 0; iTCount < iTeamCnt; iTCount++) {
+    //   sTeamName = prompt("What is the team name? ");
+    //   iWinCount = 0;
+
+    //   iGameCnt = parseInt(prompt("How many games? "));
+
+    //   for (var iGCount = 0; iGCount < iGameCnt; iGCount++) {
+    //     iScore1 = parseInt(prompt("What was " + sTeamName + " 's score? "));
+    //     iScore2 = parseInt(prompt("What was the opponent's score? "));
+
+    //     if (iScore1 > iScore2) {
+    //       iWinCount++;
+    //     }
+    //   }
+
+    //   iTeamPct = iWinCount / iGameCnt;
+
+    //   if (iTeamPct > iHighPct) {
+    //     sHighTeam = sTeamName;
+    //     iHighPct = iTeamPct;
+    //   }
+    // }
+
+    // alert("The best team was " + sHighTeam + " with a win pct of " +
+    //   (iHighPct * 100) + "%");
+
+
+
+    // // prompt # of teams
+    // // prompt # of games
+    // // ask if they won and display
+    // var iTeamCnt;
+    // var iGameCnt;
+    // var sWin;
+    // var sTeamName;
+    // var iWinCount;
+
+    // iTeamCnt = parseInt(prompt("How many teams? "));
+
+    // for (var iTCount = 0; iTCount < iTeamCnt; iTCount++) {
+    //   sTeamName = prompt("What is the team name? ");
+    //   iWinCount = 0;
+
+    //   iGameCnt = parseInt(prompt("How many games? "));
+
+    //   for (var iGCount = 0; iGCount < iGameCnt; iGCount++) {
+
+    //     sWin = prompt("Did you win (Y/N)? ").toUpperCase();
+
+    //     if (sWin == "Y") {
+    //       iWinCount++;
+    //     }
+
+    //   }
+    //   alert(sTeamName + " won " + iWinCount + " games");
+
+    // }
+
+
+    // // # of employees 
+    // // get name and id then print
+    // var iNum;
+    // var sEmpList = "";
+    // var sEmpName;
+    // var iEmpNum = 0;
+
+    // iNum = parseInt(prompt("How many employees to add? "));
+
+    // for (var iCount = 0; iCount < iNum; iCount++) {
+    //   sEmpName = prompt("What is the employee name? ");
+    //   sEmpList = sEmpList + --iEmpNum + ". " + sEmpName + "\n";
+    // }
+
+    // alert(sEmpList);
+
+    // // Ask for the number of people 
+    // // Ask for upper and lower range 
+    // // Guess the age
+    // var iCount = 0;
+    // var iNumPersons;
+    // var sName;
+    // var iGuess;
+    // var iRndAge;
+    // var iBottom;
+    // var iTop;
+
+    // iNumPersons = parseInt(prompt("How many person's ages would you like to guess?"));
+    // if (iNumPersons > 0) {
+
+    //   iBottom = parseInt(prompt("What is the lowest random age: "));
+    //   iTop = parseInt(prompt("What is the highest random age: "));
+
+    //   for (iCount = 0; iCount < iNumPersons; iCount++) {
+    //     sName = prompt("Enter the person's Name: ");
+    //     iRndAge = Math.floor(Math.random() * (iTop + 1 - iBottom)) + iBottom;
+
+    //     iGuess = parseInt(prompt("What is your guess? "));
+
+    //     if (iGuess == iRndAge) {
+    //       alert("Correct");
+    //     } else if (iGuess < iRndAge) {
+    //       alert("Too low");
+    //     } else {
+    //       alert("Too high");
+    //     }
+    //   }
+    // }
+
+
+
+
+
+
+    // // prompt for lowest and highest even #'s to print
+    // var iBottom;
+    // var iTop;
+    // var iCount;
+    // var sOutput = "";
+
+    // iBottom = parseInt(prompt("What is the lowest even number to include: "));
+    // iTop = parseInt(prompt("What is the highest even number to include: "));
+
+    // for (iCount = iBottom; iCount <= iTop; iCount++) {
+    //   if (iCount % 2 == 0) {
+    //     sOutput = sOutput + iCount + " ";
+    //   }
+    // }
+
+    // alert(sOutput);
+
+
+
+    // var sFirst;
+    // var sLast;
+    // var sInput;
+    // var iTotalSum = 0;
+    // var fAve;
+    // var iAge;
+    // var iCount = 0;
+
+
+    // sInput = prompt("Do you want to enter data? (Y/N)");
+    // while (sInput.toUpperCase() == "Y") {
+    //   sFirst = prompt("Enter the first name: ");
+    //   sLast = prompt("Enter the last name: ");
+    //   iAge = prompt("Enter the Age: ");
+
+    //   iTotalSum += iAge;
+
+    //   iCount = iCount + 1;
+
+    //   alert(sFirst + " " + sLast + " is " + iAge + " years old.");
+    //   sInput = prompt("Do you want to enter data? (Y/N)");
+    // }
+
+    // if (iCount > 0) {
+    //   fAve = iTotalSum / iCount;
+    //   alert("The average age is " + fAve);
+    // }
+  </script>
+</body>
+
+</html>
