@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body onload="initGame();" style="text-align: center;">
+  <p id="message"></p>
+  <br>
+  <p id="playerScore"></p>
+  <br>
+  <p align="center">
+    <button type="button" id="btnPlayerOne" onclick="addCard(1, 'P')" style="text-align: center;">1</button>
+  </p>
+  <p align="center">
+    <button type="button" id="btnPlayerAce" onclick="addCard(11, 'P')" style="text-align: center;">Ace</button>
+  </p>
+  <br>
+  <p id="dealerScore"></p>
+  <br>
+  <button type="button" id="btnPlayerDraw" onclick="playerDraw()">Player Draw</button>
+  <button type="button" id="btnDealerDraw" onclick="dealerDraw()">Dealer Draw</button>
+  <script>
+    let iPlayerScore = 0;
+    let iDealerScore = 0;
+
+    function initGame() {
+      document.getElementById("btnPlayerOne").style.display = "none";
+      document.getElementById("btnPlayerAce").style.display = "none";
+
+      document.getElementById("playerScore").innerHTML = "";
+      document.getElementById("dealerScore").innerHTML = "";
+
+      iPlayerScore = 0;
+      iDealerScore = 0;
+    }
+
+    function addCard(iValue, sType) {
+      document.getElementById("btnPlayerOne").style.display = "none";
+      document.getElementById("btnPlayerAce").style.display = "none";
+
+      document.getElementById("message").innerHTML = "";
+
+      if (sType == "P") {
+        iPlayerScore = iPlayerScore + iValue;
+        checkPlayerScore();
+      } else {
+        iDealerScore = iDealerScore + iValue;
+        checkDealerScore();
+      }
+    }
+
+    function playerDraw() {
+      var iNum = Math.floor(Math.random() * 10) + 1;
+
+      if (iNum == 1) {
+        document.getElementsById("message").innerHTML = "Card is an Ace<br>Player score is " +
+          iPlayerScore + "<br><br>Press the 1 button or Ace button.";
+
+        document.getElementById("btnPlayerOne").style.display = "block";
+        document.getElementById("btnPlayerAce").style.display = "block";
+      } else {
+        iPlayerScore += iNum;
+        document.getElementById("message").innerHTML = "";
+        document.getElementById("playerScore").innerHTML = "Player score is " + iPlayerScore;
+        checkPlayerScore();
+
+      }
+    }
+
+    function checkPlayerScore() {
+      if (iPlayerScore > 21) {
+        document.getElementById("message").innerHTML = "Player busts!<br>Dealer wins.";
+      } else if (iPlayerScore == 21) {
+        document.getElementById("message").innerHTML = "Player wins.";
+        initGame();
+      } else {
+        document.getElementById("playerScore").innerHTML = "Player has " + iPlayerScore;
+
+      }
+    }
+
+    function dealerDraw() {
+      let iNum = 1;
+
+      document.getElementById("message").innerHTML = "";
+
+      while (iDealerScore < 17) {
+        iNum = Math.floor(Math.random() * 10) + 1;
+
+        iDealerScore += iNum;
+        document.getElementById("dealerScore").innerHTML = "Dealer score is " + iDealerScore;
+      }
+
+      checkDealerScore();
+    }
+
+    function checkDealerScore() {
+      if (iDealerScore > 21) {
+        document.getElementById("message").innerHTML = "Dealer busts!<br>Player wins.";
+        initGame();
+      } else if (iDealerScore == 21) {
+        document.getElementById("message").innerHTML = "Dealer wins.";
+        initGame();
+      } else {
+        document.getElementById("message").innerHTML = "Dealer has " + iDealerScore;
+        freeze();
+      }
+    }
+
+    function freeze() {
+      if (iPlayerScore > iDealerScore) {
+        document.getElementById("message").innerHTML = "Player wins with " + iPlayerScore;
+      } else if (iDealerScore > iPlayerScore) {
+        document.getElementById("message").innerHTML = "Dealer wins with " + iDealerScore;
+      } else {
+        document.getElementById("message").innerHTML = "Push!"
+      }
+      initGame();
+    }
+  </script>
+</body>
+
+</html>

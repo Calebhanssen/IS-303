@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <button type="button" onclick="showPtags();">Show</button>
+  <button type="button" onclick="hidePtags();">Hide</button>
+  <button type="button" id="myButton" onmouseover="changeCursor();" onmouseout="changeProgress();">Cursor</button>
+  <button type="button" onclick="changeClass();">Class Change</button>
+  <button type="button" onclick="changeTag();">Class HTML Tag</button>
+  <br>
+  <p id="changeText" class="myPtag"></p>
+  <p id="changeColor" class="myPtag"></p>
+  <h1>I am the H1 tag</h1>
+  <script>
+    function changeTag() {
+      let aTags;
+
+      aTags = document.getElementsByTagName("P");
+
+      for (let iCount = 0; iCount < aTags.length; iCount++) {
+        aTags[iCount].innerHTML = "My tag has changed"
+      }
+
+      aTags = document.getElementsByTagName("h1");
+
+      for (let iCount = 0; iCount < aTags.length; iCount++) {
+        aTags[iCount].innerHTML = "The H1 changed"
+      }
+
+    }
+
+    function changeClass() {
+      let aTags;
+
+      aTags = document.getElementsByClassName("myPtag");
+
+      for (let iCount = 0; iCount < aTags.length; iCount++) {
+        aTags[iCount].style.color = 'yellow';
+        aTags[iCount].style.background = 'red';
+      }
+    }
+
+    function changeCursor() {
+      document.getElementById("myButton").style.cursor = "pointer";
+    }
+
+    function changeProgress() {
+      document.getElementById("myButton").style.cursor = "progress";
+    }
+
+    function showPtags() {
+      document.getElementById("changeText").innerHTML = "My text has been changed";
+      document.getElementById("changeColor").innerHTML = "My color has changed";
+      document.getElementById("changeColor").style.color = "white";
+      document.getElementById("changeColor").style.backgroundColor = "blue";
+      document.getElementById("changeText").style.display = "block";
+      document.getElementById("changeColor").style.display = "block";
+    }
+
+    function hidePtags() {
+      document.getElementById("changeText").style.display = "none";
+      document.getElementById("changeColor").style.display = "none";
+    }
+  </script>
+</body>
+
+</html>

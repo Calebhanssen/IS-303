@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <button type="button" id="btnPlayerDraw" onclick="playerDraw();">Player Draw</button>
+  <button type="button" id="btnDealerDraw" onclick="dealerDraw();">Dealer Draw</button>
+  <script>
+    let iPlayerScore = 0;
+    let iDealerScore = 0;
+
+    function playerDraw() {
+      let iNum = Math.floor(Math.random() * 10) + 1;
+
+      if (iNum == 1) {
+        alert("Card is an Ace. Current score is " + iPlayerScore);
+
+        iNum = parseInt(prompt("Do you want a 1 or 11"));
+      }
+
+      iPlayerScore += iNum;
+
+      if (iPlayerScore > 21) {
+        alert("Player busts! Dealer wins.");
+        resetNumbers();
+      } else if (iPlayerScore == 21) {
+        alert("Player wins with 21!");
+        resetNumbers();
+      } else {
+        alert("Player has " + iPlayerScore);
+      }
+    }
+
+    function dealerDraw() {
+      let iNum;
+
+      while (iDealerScore < 17) {
+        iNum = Math.floor(Math.random() * 10) + 1;
+
+        if (iNum == 1) {
+          alert("Card is an Ace. Current score is " + iDealerScore);
+
+          iNum = parseInt(prompt("Do you want a 1 or 11"));
+        }
+        iDealerScore += iNum;
+      }
+
+      if (iDealerScore > 21) {
+        alert("Dealer busts! Player wins.");
+        resetNumbers();
+      } else if (iDealerScore == 21) {
+        alert("Dealer wins with 21!");
+        resetNumbers();
+      } else {
+        alert("Dealer has " + iDealerScore);
+      }
+
+    }
+
+    function freeze() {
+      if (iPlayerScore > iDealerScore) {
+        alert("Player wins with " + iPlayerScore + " ");
+
+      } else if (iDealerScore > iPlayerScore) {
+        alert("Dealer wins with " + iDealerScore + " ");
+      } else {
+        alert("Push!")
+      }
+      resetNumbers();
+    }
+
+    function resetNumbers() {
+      iPlayerScore = 0;
+      iDealerScore = 0;
+    }
+  </script>
+</body>
+
+</html>
