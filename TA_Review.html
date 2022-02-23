@@ -1,0 +1,108 @@
+<!-- 
+    Caleb Hanssen 
+    Section 5
+    Test 1 (track exactly how many burgers each customers order and organize this using an array and outputting in different colors)
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Total Burgers</title>
+</head>
+
+<body>
+    <p id="myOutput"></p>
+    <h1><u> TOTAL BURGERS </u></h1>
+    <br>
+    <br>
+    <!--setting an id for the-->
+
+
+    <button type="button" onclick="showBreakdowns()">Open Store</button>
+    <!--it must include the () to be a function-->
+
+
+    <script>
+        function showBreakdowns() { //the function contains everything you want to happen when the button's clicked
+
+
+            let asCustomers = ["Jefe", "El Guapo", "Lucky Day",
+                "Ned Nederaland", "Dust Bottoms", "Harry Flugleman", "Carmen", "Invisible Swordsman",
+                "Singing Bush",
+            ]
+            let sOutput = "";
+            let sOutput2 = "";
+            let sOutput3 = "";
+            let sOutputCustomers = [];
+            let sHold;
+            var aiTotalOrders;
+            var aiOrderAmount;
+
+
+            while (aiTotalOrders <=
+                100) { //  this should allow me to continue to process orders until I hit the limit of 100 per day
+                aiOrderAmount[iCount] = Math.floor(Math.random() * 21 +
+                    1); // this takes the random number of orders between 1 to 20
+            }
+
+
+            aiTotalOrders = aiTotalOrders + aiOrderAmount *
+                100 // this should have made the total orders = the random amount times 100 per day
+
+            shuffle(asCustomers); // this should shuffle or rearrange the array order until the while loop is over.
+
+            for (let iOuter = 0; iOuter < aiBurgerCount.length - 1; iOuter++) //begins the outer loop 
+            {
+                for (let iInner = iOuter + 1; iInner < aiBurgerCount.length; iInner++) //begins the inner loop
+                {
+                    if (aiBurgerCount[iOuter] < aiBurgerCount[
+                            iInner]) //begins bubble sort (descending order) for the burgers
+                    {
+                        sHoldRide = asCustomers[iInner];
+                        iHoldBreakdowns = aiBurgerCount[iInner];
+
+                        asCustomers[iInner] = asCustomers[iOuter];
+                        aiBurgerCount[iInner] = aiBurgerCount[iOuter];
+
+                        asCustomers[iOuter] = sHoldRide;
+                        aiBurgerCount[iOuter] = iHoldBreakdowns;
+                    }
+                }
+            }
+
+            // if I could have got the arrays to load properly, this for loop would have sorted in order the customers and their total orders
+            for (let iCount = 0; iCount < asCustomers.length; iCount++) //begins color coding process loop
+            {
+                if (aiBurgerCount[iCount] >= 1100) //If the total burger count is at least 1100, use "Green"
+                {
+                    document.getElementById("myOutput").style.color = "green"; //sets color
+                    sOutput = sOutput + asCustomers[iCount] + "-" + aiBurgerCount[iCount] + "<br>"; //sets output
+                    document.getElementById("myOutput").innerHTML = sOutput; //explains where to put the output
+                } else if (aiBurgerCount[iCount] < 1100 && aiBurgerCount[iCount] >
+                    1000) // If the total burger count is at least 1000, use "Blue" 
+                {
+                    document.getElementById("myOutput").style.color = "blue";
+                    sOutput2 = sOutput2 + asCustomers[iCount] + "-" + aiBurgerCount[iCount] + "<br>";
+                    document.getElementById("myOutput").innerHTML = sOutput2;
+                } else if (aiBurgerCount[iCount] < 1000 && aiBurgerCount[iCount] >
+                    9000) // If the total burger count is at least 900, use "DarkGoldenRod" 
+                {
+                    document.getElementById("myOutput").style.color = "DarkGoldenRod";
+                    sOutput2 = sOutput2 + asCustomers[iCount] + "-" + aiBurgerCount[iCount] + "<br>";
+                    document.getElementById("myOutput").innerHTML = sOutput2;
+                } else //what to do if the breakdowns are less than 9000 Otherwise, use "Red" 
+                {
+                    document.getElementById("myOutput").style.color = "red";
+                    sOutput3 = sOutput3 + asCustomers[iCount] + "-" + aiBurgerCount[iCount] + "<br>";
+                    document.getElementById("myOutput").innerHTML = sOutput3;
+                }
+            }
+        }
+        }
+    </script>
+</body>
+
+</html>
