@@ -1,0 +1,36 @@
+<!--Caleb Hanssen -->
+<!--Put a description here-->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script>
+        function playGame() {
+            var numGames = parseInt(document.getElementById("games").value);
+            var myTeam = document.getElementById("teamName").value;
+            var output = "";
+
+            //This is where you will put your code
+
+            //Build the data to display and assign it to the output variable
+            //For example: output = output + myTeam + " played " + numGames + " games<br>Their record is 25-0";
+            //NOTE: You have to use the <br> to go to a new line instead of \n because you are writing HTML
+
+            //Assign the contents of the variable output to the html tag outputGames
+            document.getElementById("outputGames").innerHTML = output;
+        }
+    </script>
+
+    <title>
+        Welcome to March Madness
+    </title>
+</head>
+
+<body>
+    Enter your team name: <input type="text" name="teamName" id="teamName"><br><br>
+    Number of games: <input type="text" name="games" id="games"><br><br>
+    <button type="button" onclick="playGame()">Start Season</button><br>
+    <p id="outputGames"></p>
+</body>
+
+</html>
