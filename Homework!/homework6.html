@@ -1,23 +1,96 @@
 <!--Caleb Hanssen -->
-<!--Put a description here-->
+<!--Section 5
+A program that asks for team name and amount of games played. Use a button with the function playGame() to start the season 
+and then calculate the winning percentage for the team the user enters. Use 2 for loops to keep track of the record depending on 
+regular time and overtime if need be and output the result. Also I worked with my team so the code should be similar to theirs.-->
+
 <!DOCTYPE html>
 <html>
 
 <head>
     <script>
         function playGame() {
+
+            // declare variables
             var numGames = parseInt(document.getElementById("games").value);
             var myTeam = document.getElementById("teamName").value;
-            var output = "";
+            var sOutput = "";
+            var bHome = true;
+            var iTeamScore = 0;
+            var iOppScore = 0;
+            var iWins = 0;
+            var winPercentage;
+            var iOvertime = 0;
 
-            //This is where you will put your code
+            // for loop to keep track of the number of games entered by the user
+            for (iCount = 1; iCount <= numGames; iCount++) {
 
-            //Build the data to display and assign it to the output variable
-            //For example: output = output + myTeam + " played " + numGames + " games<br>Their record is 25-0";
-            //NOTE: You have to use the <br> to go to a new line instead of \n because you are writing HTML
 
-            //Assign the contents of the variable output to the html tag outputGames
-            document.getElementById("outputGames").innerHTML = output;
+                if ((iCount / 2).isinteger) {
+                    bHome == false;
+                } else {
+                    bHome == true;
+                }
+
+                // random score 0-101 for each of the teams. If you're home team add 5 points
+                if (bHome == true) {
+                    iTeamScore = Math.floor(Math.random() * 101) + 5;
+                    iOppScore = Math.floor(Math.random() * 101);
+                } else {
+                    iTeamScore = Math.floor(Math.random() * 101);
+                    iOppScore = Math.floor(Math.random() * 101) + 5;
+                }
+
+                if (iTeamScore > iOppScore) {
+                    //concat the variable output
+                    sOutput = sOutput + myTeam + ": " + iTeamScore + " - " + iOppScore + " and wins. <br>";
+
+                    // increase the win counter 
+                    iWins = iWins + 1;
+                } else if (iTeamScore < iOppScore) {
+                    //concat the variable output. No need to increase a "loss score"
+                    sOutput = sOutput + myTeam + ": " + iTeamScore + " - " + iOppScore + " and loses. <br>";
+
+                } else {
+
+                    // for loop for overtime that will generate more random numbers to determine a winner
+                    for (iCount1 = 0; iTeamScore == iOppScore; iCount1++) {
+
+                        var iTeamOverScore = Math.floor(Math.random() * 16);
+                        var iOppOverScore = Math.floor(Math.random() * 16);
+
+                        // overtime counter increases
+                        iOvertime = iOvertime + 1;
+
+                        iTeamScore = (iTeamScore + iTeamOverScore)
+                        iOppScore = (iOppScore + iOppOverScore)
+
+                        if (iTeamScore > iOppScore) {
+                            sOutput = sOutput + myTeam + ": " + iTeamScore + " - " + iOppScore + " with " +
+                                iOvertime + " OT and wins." + "<br>";
+
+                            // increase win counter again
+                            iWins = iWins + 1
+                        } else if (iTeamScore < iOppScore) {
+                            sOutput = sOutput + myTeam + ": " + iTeamScore + " - " + iOppScore + " with " +
+                                iOvertime + " OT and losses." + "<br>"
+
+                        }
+                    }
+                }
+            }
+
+            // computes the win percentage 
+            winPercentage = Number((iWins / numGames) * 100).toFixed(1);
+
+            // display record
+            sOutput = sOutput + "<br><br>" + myTeam + " record is " + iWins + " - " + (numGames - iWins) +
+                " with a winning percentage of " + winPercentage + "%.";
+
+            // puts outputGames to an html tag
+            document.getElementById("sOutputGames").innerHTML = sOutput;
+
+
         }
     </script>
 
@@ -30,7 +103,7 @@
     Enter your team name: <input type="text" name="teamName" id="teamName"><br><br>
     Number of games: <input type="text" name="games" id="games"><br><br>
     <button type="button" onclick="playGame()">Start Season</button><br>
-    <p id="outputGames"></p>
+    <p id="sOutputGames"></p>
 </body>
 
 </html>
