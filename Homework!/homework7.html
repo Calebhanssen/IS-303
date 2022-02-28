@@ -15,10 +15,50 @@ inside while loop you have a counter -->
 </head>
 
 <body>
+  <form>
+    <br>
+    <label>What number do you want for Yahtzee?</label>
+    <input type="text">
+    <button type="button" onclick="rollTheDie()" minlength="1" maxlength="6">Click me</button>
+  </form>
+  <p> Dice 1 Rolls = </p>
+  <p> Dice 2 Rolls = </p>
+  <p> Dice 3 Rolls = </p>
+  <p> Dice 4 Rolls = </p>
+  <p> Dice 5 Rolls = </p>
+  <p> Total # of rolls: </p>
+
   <script>
-    // list the dice and concat. to dynamically grab the image.
-    // dynamically build the name of the file that you want to display.
-    // img.src = ""
+    function rollTheDie() {
+      // list the dice and concat. to dynamically grab the image.
+      // dynamically build the name of the file that you want to display.
+      // img.src = ""
+
+      var iDi1 = 0;
+      var iDi2 = 0;
+      var iDi3 = 0;
+      var iDi4 = 0;
+      var iDi5 = 0;
+      var iTotalRolls = 0;
+
+      iDi1 = Math.floor(Math.random() * 5) + 1;
+      iDi2 = Math.floor(Math.random() * 5) + 1;
+      iDi3 = Math.floor(Math.random() * 5) + 1;
+      iDi4 = Math.floor(Math.random() * 5) + 1;
+      iDi5 = Math.floor(Math.random() * 5) + 1;
+
+
+
+
+
+
+
+
+
+
+
+
+    }
   </script>
 </body>
 
