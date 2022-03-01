@@ -51,6 +51,7 @@ You should call this function once per die.-->
       p {
         font-family: verdana;
         color: rgb(0, 0, 0);
+        font-weight: 200;
       }
 
       label {
@@ -71,11 +72,16 @@ You should call this function once per die.-->
       legend {
         text-align: center;
       }
+
+      img {
+        width: 200;
+        height: 80;
+      }
     </style>
   </form>
   <br>
   <fieldset>
-    <p id="images"></p>
+    <!-- <p id="images" img src="./Images/dice1Use.jpeg"></p> -->
     <br>
     <br>
     <p id="sOutput"></p>
@@ -87,7 +93,7 @@ You should call this function once per die.-->
       let aiDie = [];
       var iTotalRolls = 0;
       var iInput = document.getElementById("input").value;
-      parseInt(iInput);
+      parseInt(iInput); // do we need to put iInput = ...
       var sSummary = '';
       var sOutput = "";
       var iOverallTotal = 0;
@@ -96,6 +102,7 @@ You should call this function once per die.-->
       if ((iInput < 1) || (iInput > 6)) {
         alert("Error! Number is not between 1 and 6");
       }
+      //
       for (let iCount = 0; iCount < 5; iCount++) {
         aiDie[iCount] = Math.ceil(Math.random() * 6);
         countTheRolls();
@@ -106,7 +113,7 @@ You should call this function once per die.-->
           countTheRolls();
         }
         if (aiDie[iCount] = iInput) {
-          sSummary = sSummary + "Dice " + (iCount + 1) + " Rolls = " + "\n" + iTotalRolls;
+          sSummary = sSummary + "Dice " + (iCount + 1) + " Rolls = " + iTotalRolls + "<br>";
         }
         iOverallTotal = iOverallTotal + iTotalRolls;
       }
@@ -125,10 +132,11 @@ You should call this function once per die.-->
         iImgDi4 = iInput;
         iImgDi5 = iInput;
 
-        sOutput = sSummary + "\n" + "Total # of rolls: " + iOverallTotal
+        sOutput = sSummary + "<br>" + "Total # of rolls: " + iOverallTotal
         //input images
         document.getElementById("sOutput").innerHTML = sOutput;
-        document.getElementById("images").innerHTML = "<img src=" + dice1Use + "/>;
+        // document.getElementById("Images").innerHTML = 
+
       }
       // check to make sure the # entered is between 1 and 6, and run the entire program 
       displayDieImage()

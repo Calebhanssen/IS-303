@@ -1,0 +1,43 @@
+<!-- car factory -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    class Car {
+
+      static factory = "Milan"; // static -- attribute is now attached to the class not the object
+
+      constructor(model, make, maxSpeed) {
+        this.model = model;
+        this.make = make;
+        this.maxSpeed = maxSpeed;
+        this.currentSpeed = 0;
+      }
+
+      accelerate(increase) {
+        this.currentSpeed += increase;
+      }
+
+      brake(decrease) {
+        this.currentSpeed -= decrease;
+      }
+    }
+
+
+    let oCar1 = new Car("Mini", "S", 120);
+    oCar1.accelerate(100);
+    oCar1.brake(50);
+    let oCar2 = new Car("Lexus", "350", 140);
+    let oCar3 = new Car("Bugatti", "Nova", 320);
+  </script>
+</body>
+
+</html>
