@@ -19,7 +19,7 @@ inside while loop you have a counter -->
     <br>
     <label>What number do you want for Yahtzee?</label>
     <input type="text">
-    <button type="button" onclick="rollTheDie()" minlength="1" maxlength="6">Click me</button>
+    <button type="button" id="input" onclick="rollTheDie()">Click me</button>
   </form>
   <p> Dice 1 Rolls = </p>
   <p> Dice 2 Rolls = </p>
@@ -40,6 +40,34 @@ inside while loop you have a counter -->
       var iDi4 = 0;
       var iDi5 = 0;
       var iTotalRolls = 0;
+      var iInput = parseInt(document.getElementById("input").value)
+
+
+      //Function to count # of rolls
+      function countTheRolls() {
+        iTotalRolls = iTotalRolls + 1;
+      }
+
+      //Function to display die image and die counter (output)
+      function displayDieImage() {
+
+      }
+
+
+      // check to make sure the # entered is between 1 and 6.  
+      if ((iInput >= 1) && (iInput <= 6)) {
+        function rollTheDie() {
+
+          for (let iCount = 1; iCount >= 6; iCount++) {
+            while (iDi1)
+              countTheRolls();
+          }
+        }
+      } else {
+        alert("Error! Number is not between 1 and 6");
+      }
+
+
 
       iDi1 = Math.floor(Math.random() * 5) + 1;
       iDi2 = Math.floor(Math.random() * 5) + 1;
