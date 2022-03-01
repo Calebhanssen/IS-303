@@ -2,10 +2,6 @@
       Section 5
 For loop for 5 di for each di keep rolling until it == input while loop over the whole thing
 inside while loop you have a counter 
-
-
-
-
 At least use:
 html label "What number do you want for Yahtzee?"
 html input of text for getting the number
@@ -13,20 +9,15 @@ html button for Click me
 5 image tags for the dice (Do not show the dice when the screen is first displayed - src="")
 html P tag for each of the dice roll counts
 html P tag for the total number of roll counts
-
 When the user clicks on the Click me button go to a function called rollTheDie.
 This function will first check to make sure the number entered in the text box is between 1 and 6. If not, display an error message and set focus back to the input. Assume that the user will always input a number for this assignment.
 Otherwise, keep rolling each die and generate a random numbers between 1 and 6. As you do so, keep track of how many times you had to roll that die and also keep a grand total of the number of times all of the dice were rolled.
 Once you "roll" the number entered in the text box (i.e. 3) then you display that die image (i.e. dice3Use.jpg) to the id on the html page and also the count of rolls for that die to the id for that dice counter (i.e. dice3Count). Display a message "Dice 3 Rolls = 7" where 7 was the number of rolls for that dice (hint: concatenation dynamically using the die # in the string - same with the image of the die).
 Then continue this process for the rest of the dice.
-
 Once completed display the total number of rolls to the P tag for the total count.
 I want you to create a separate function for the rolling of the die, counting the number of rolls,
  and displaying the die image and die counter and keeping the total count variable.
-
 You should call this function once per die.-->
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -38,15 +29,12 @@ You should call this function once per die.-->
 </head>
 
 <body>
-
-
-
   <form>
     <h1>WHO'S READY TO PLAY YAHTZEEEEE?</h1>
     <br>
     <legend>
       <label>What number do you want for Yahtzee?</label>
-      <input type="text">
+      <input type="number" id="input" min="1" max="6" step="1" required>
       <button type="button" onclick="rollTheDie()">Click me</button>
     </legend>
     <style>
@@ -63,8 +51,6 @@ You should call this function once per die.-->
       p {
         font-family: verdana;
         color: rgb(0, 0, 0);
-
-
       }
 
       label {
@@ -82,67 +68,55 @@ You should call this function once per die.-->
         font-size: 16px;
       }
 
-
       legend {
         text-align: center;
       }
     </style>
   </form>
-
   <br>
   <fieldset>
-    <p> Dice 1 Rolls = </p>
-    <p> Dice 2 Rolls = </p>
-    <p> Dice 3 Rolls = </p>
-    <p> Dice 4 Rolls = </p>
-    <p> Dice 5 Rolls = </p>
-    <p> Total # of rolls: </p>
+    <p id="images"></p>
+    <br>
+    <br>
+    <p id="sOutput"></p>
+
   </fieldset>
-
   <script>
-    // list the dice and concat. to dynamically grab the image.
-    // dynamically build the name of the file that you want to display.
-    // img.src = ""
-
-    /*var iDi1 = 0;
-    var iDi2 = 0;
-    var iDi3 = 0;
-    var iDi4 = 0;
-    var iDi5 = 0;*/
-
-    let aiDie = [5];
-    var iTotalRolls = 0;
-    var iInput = parseInt(document.getElementById("input")).value;
-    var sSummary
-    var sOutput = "";
-    var iOverallTotal = 0;
-
     //Function to roll the die
     function rollTheDie() {
-      for (let iCount = 1; iCount < 6; iCount++) {
-        aiDie[iCount] = Math.floor(Math.random() * 6);
+      let aiDie = [];
+      var iTotalRolls = 0;
+      var iInput = document.getElementById("input").value;
+      parseInt(iInput);
+      var sSummary = '';
+      var sOutput = "";
+      var iOverallTotal = 0;
+
+      //check if the number is valid
+      if ((iInput < 1) || (iInput > 6)) {
+        alert("Error! Number is not between 1 and 6");
+      }
+      for (let iCount = 0; iCount < 5; iCount++) {
+        aiDie[iCount] = Math.ceil(Math.random() * 6);
         countTheRolls();
 
         //If loop will keep rolling a die over and over until the die value is equal to the user input
-        if (aiDie[iCount] != iInput) {
-          aiDie[iCount] = Math.floor(Math.random() * 6);
+        while (aiDie[iCount] != iInput) {
+          aiDie[iCount] = Math.ceil(Math.random() * 6);
           countTheRolls();
-        } else {
-          sSummary = sSummary + "Dice " + iCount + " Rolls = " + iTotalRolls + "< br > < br >";
         }
-
+        if (aiDie[iCount] = iInput) {
+          sSummary = sSummary + "Dice " + (iCount + 1) + " Rolls = " + "\n" + iTotalRolls;
+        }
         iOverallTotal = iOverallTotal + iTotalRolls;
-
       }
-
-
       //Function to count # of rolls
       function countTheRolls() {
+
         //for (let iCount = 0; iCount < 6; iCount++) {
         iTotalRolls = iTotalRolls + 1;
         //}
       }
-
       //Function to display die image and die counter (output)
       function displayDieImage() {
         iImgDi1 = iInput;
@@ -151,20 +125,13 @@ You should call this function once per die.-->
         iImgDi4 = iInput;
         iImgDi5 = iInput;
 
-        sOutput = sSummary + "Total # of rolls: " + iOverallTotal
-
+        sOutput = sSummary + "\n" + "Total # of rolls: " + iOverallTotal
         //input images
-        document.getElementById("dice1").src = "/Images/dice" + iInput + "Use.jpeg"
-
+        document.getElementById("sOutput").innerHTML = sOutput;
+        document.getElementById("images").innerHTML = "<img src=" + dice1Use + "/>;
       }
-
       // check to make sure the # entered is between 1 and 6, and run the entire program 
-      if ((iInput < 1) && (iInput > 6)) {
-        alert("Error! Number is not between 1 and 6");
-
-      } else {
-        rollTheDie();
-      }
+      displayDieImage()
     }
   </script>
 </body>
