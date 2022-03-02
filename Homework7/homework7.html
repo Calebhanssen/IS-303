@@ -1,0 +1,145 @@
+<!-- Caleb Hanssen
+     Section 5
+     This program will run a Yahtzee simulation, and determine how many rolls it takes to get the desired integer that is input by the user.
+     all of this is displayed for the customer to see how many rolls it took. Images are then displayed to reflect the di, along with a winner sign* -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Homework 7</title>
+</head>
+
+<body>
+  <form>
+    <h1>WHO'S READY TO PLAY YAHTZEEEEE?</h1>
+    <br>
+    <legend>
+      <label>What number do you want for Yahtzee?</label>
+      <input type="number" id="input" min="1" max="6" step="1" required>
+      <button type="button" onclick="rollTheDie()">Roll</button>
+    </legend>
+    <style>
+      body {
+        background-color: rgb(64, 151, 167);
+      }
+
+      h1 {
+        color: white;
+        text-align: center;
+        text-shadow: 2px 2px red;
+      }
+
+      p {
+        font-family: verdana;
+        color: rgb(0, 0, 0);
+        font-weight: 200;
+      }
+
+      label {
+        font-size: 20px;
+        font-weight: 600;
+        margin-right: 10px;
+      }
+
+      button {
+        background-color: #ff0000;
+        border: 0.0625rem solid #000000;
+        padding: 10px 32px;
+        text-align: center;
+        display: inline-block;
+        font-size: 16px;
+      }
+
+      legend {
+        text-align: center;
+      }
+    </style>
+  </form>
+  <br>
+  <fieldset>
+    <p id="images"></p>
+    <br>
+    <br>
+    <p id="sOutput"></p>
+    <br>
+  </fieldset>
+  <p id="imgGif"></p>
+  <script>
+    //Function to roll the die
+    function rollTheDie() {
+      let aiDie = [];
+      var iTotalRolls = 0;
+      var iInput = document.getElementById("input").value;
+      parseInt(iInput);
+      var sSummary = "";
+      var sOutput = "";
+      var iOverallTotal = 0;
+
+      //check if the number is valid
+      if ((iInput < 1) || (iInput > 6)) {
+        alert("Error! Number is not between 1 and 6");
+      }
+
+      //This rolls the die over and over until the random number is equal to the user input variable
+      for (let iCount = 0; iCount < 5; iCount++) {
+        aiDie[iCount] = Math.ceil(Math.random() * 6);
+        countTheRolls();
+
+        //If loop will keep rolling a die over and over until the die value is equal to the user input
+        while (aiDie[iCount] != iInput) {
+          aiDie[iCount] = Math.ceil(Math.random() * 6);
+          countTheRolls();
+        }
+
+        //Generate the individual summary output for each die
+        if (aiDie[iCount] = iInput) {
+          sSummary = sSummary + "Dice " + (iCount + 1) + " Rolls = " + iTotalRolls + "<br>";
+        }
+
+        //This counter keeps track of how many rolls have been taken overall
+        iOverallTotal = iOverallTotal + iTotalRolls;
+      }
+
+      //Function to count # of rolls
+      function countTheRolls() {
+        iTotalRolls = iTotalRolls + 1;
+      }
+
+      //Function to display die image and die counter (output)
+      function displayDieImage() {
+        sOutput = sSummary + "<br>" + "Total # of rolls: " + iOverallTotal
+
+        //Input the output dialogue
+        document.getElementById("sOutput").innerHTML = sOutput;
+
+        //Function that dynamically generates the image of the die depending on the input variable
+        function generateDie() {
+          var dieImg = document.createElement('img');
+          dieImg.src = 'Images/dice' + iInput + 'Use.jpg';
+
+          return dieImg
+        }
+
+        //This for loop generates the image of the die five times
+        for (var i = 0; i < 5; i++) {
+          document.getElementById('images').appendChild(generateDie());
+        }
+
+        // This block of code rewards us with a fun image WINNER
+        var wooImg = document.createElement('img');
+        wooImg.src = 'Images/winner.jpg';
+        document.getElementById('imgGif').appendChild(wooImg);
+
+
+      }
+      //This just runs the function
+      displayDieImage()
+    }
+  </script>
+</body>
+
+</html>
