@@ -11,6 +11,12 @@
 
 <body>
   <script>
+    class Engine {
+      constructor() {
+        this.cylinders = 0;
+      }
+    }
+
     class Car {
 
       static factory = "Milan"; // static -- attribute is now attached to the class not the object
@@ -20,6 +26,8 @@
         this.make = make;
         this.maxSpeed = maxSpeed;
         this.currentSpeed = 0;
+        this.engine = new Engine();
+        this.engine.cylinders = 4;
       }
 
       accelerate(increase) {
