@@ -175,11 +175,88 @@ calculate a student’s chance (crude approximation and non-binding) of being ac
           systems
           design and implementation; database development and management; programming; telecommunications networking;
           2-tier, 3-tier, and n-tier application development; and web application development.</p>
+        <a href="https://marriottschool.byu.edu/infosys/" target="_parent"><button>Marriot School</button></a>
       </div>
 
+      <!-- This is where we put the ptags to call the java script
+      also a button with the marriot school link https://marriottschool.byu.edu/infosys/ -->
       <div class="column">
+
+
         <h2>Chances of getting in!?</h2>
+
         This is where we will have the projection of whether or not you will get into the program!??
+        <br>
+        <br>
+        IS 201:
+        <select name="list" id="is201">
+          <option value="A" id="A">A</option>
+          <option value="A-">A-</option>
+          <option value="B+">B+</option>
+          <option value="B">B</option>
+          <option value="B-">B-</option>
+          <option value="C+">C+</option>
+          <option value="C">C</option>
+          <option value="C-">C-</option>
+          <option value="D+">D+</option>
+          <option value="D">D</option>
+          <option value="D-">D-</option>
+          <option value="E">E</option>
+        </select>
+        Retake <input id="retake201" type="checkbox">
+        <br>
+        <br>
+        IS 303 / CS 142:
+        <select name="list" id="is303">
+          <option value="A">A</option>
+          <option value="A-">A-</option>
+          <option value="B+">B+</option>
+          <option value="B">B</option>
+          <option value="B-">B-</option>
+          <option value="C+">C+</option>
+          <option value="C">C</option>
+          <option value="C-">C-</option>
+          <option value="D+">D+</option>
+          <option value="D">D</option>
+          <option value="D-">D-</option>
+          <option value="E">E</option>
+        </select>
+        Retake <input id="retake303" type="checkbox">
+        <br>
+        <br>
+
+        ACC 200:
+        <select name="list" id="acc200">
+          <option value="A">A</option>
+          <option value="A-">A-</option>
+          <option value="B+">B+</option>
+          <option value="B">B</option>
+          <option value="B-">B-</option>
+          <option value="C+">C+</option>
+          <option value="C">C</option>
+          <option value="C-">C-</option>
+          <option value="D+">D+</option>
+          <option value="D">D</option>
+          <option value="D-">D-</option>
+          <option value="E">E</option>
+        </select>
+        Retake <input id="retakeAcc200" type="checkbox">
+        <br>
+        <br>
+        BYU Overall GPA:
+        <input type="text" id="GPA">
+        <br>
+        <br>
+        BYU Last 30 Credits GPA: <input type="text" id="last30">
+        <br>
+        <br>
+        <button id="calculate" onclick="calcGPA()">CALCULATE</button>
+        <br>
+        <br>
+        <button id="Reset" onclick="clearCircle()">RESET</button>
+        <br>
+        <br>
+
 
       </div>
     </div>
@@ -189,7 +266,7 @@ calculate a student’s chance (crude approximation and non-binding) of being ac
     <br>
     <main>
       <h2>IS Faculty Directory</h2>
-      <div class="directory">
+      <div class=" directory">
 
         <div class="card">
           <div class="overlay">
@@ -387,10 +464,46 @@ calculate a student’s chance (crude approximation and non-binding) of being ac
               constantly tinker with technology.</p>
           </div>
         </div>
+      </div>
     </main>
     <script>
+      window.onload = resetToBasic();
+
+      function resetToBasic() {
+        document.getElementById("is201").focus();
+      };
+
+      function clearCircle() {
+        resetToBasic();
+        document.getElementById("GPA").value = "";
+        document.getElementById("last30").value = "";
+        document.getElementById("is201").selectedIndex = 0;
+        document.getElementById("is303").selectedIndex = 0;
+        document.getElementById("acc200").selectedIndex = 0;
+        document.getElementById("retake201").checked = false;
+        document.getElementById("retake303").checked = false;
+        document.getElementById("retakeAcc200").checked = false;
+      }
+
+      function calcGPA() {
+        //
+        var A = document.getElementById("is201") = 1;
+        var Aminus = .925;
+        var Bplus = .875;
+        var B = .75;
+        var Bminus = .675;
+        var Cplus = .6;
+        var C = .5;
+        var Cminus = .425;
+        var Dplus = .35;
+        var D = .25;
+        var Dminus = .175;
+        var E = 0;
 
 
+
+
+      }
     </script>
 </body>
 
