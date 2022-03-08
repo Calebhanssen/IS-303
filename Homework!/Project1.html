@@ -1,0 +1,559 @@
+<!-- Caleb Hanssen, Anna Dalley, Weston Evans, Dallas Wise, Keith Hayes, Curtis Rosenvall
+calculate a student’s chance (crude approximation and non-binding) of being accepted into the Information Systems Core program (BSIS). -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <style>
+    h1 {
+      color: rgb(6, 38, 134);
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      font-size: medium;
+    }
+
+    h2 {
+      font-weight: 600;
+      color: rgb(6, 38, 134);
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      height: 50vh;
+      object-fit: cover;
+      object-position: 50% 70%;
+    }
+
+    .hero {
+      position: relative;
+    }
+
+    h1.logo {
+      /* inline-block limits the width of the element to the width of its content, not the width of its container (which is default for block). this will keep the underline from expanding past the text   */
+      display: inline-block;
+      color: rgb(255, 255, 255);
+      font-size: 2rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      line-height: 1;
+      text-shadow: 4px 4px 6px rgb(0, 0, 0);
+
+
+      /* positioning   */
+      position: absolute;
+      top: 0rem;
+      left: 1rem;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    .directory {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
+      grid-gap: 1rem;
+      grid-auto-flow: row;
+    }
+
+    h3 {
+      color: darkslateblue;
+    }
+
+    .card {
+      width: 100%;
+      display: block;
+      position: relative;
+      box-shadow: -1px 1px 10px -3px;
+    }
+
+    img {
+      width: 100%;
+      display: block;
+      box-shadow: -2px 2px 10px -3px black;
+    }
+
+    .overlay {
+      position: relative;
+      text-align: center;
+      color: black;
+      margin: 1rem;
+    }
+
+    .text-wrapper {
+      text-align: center;
+      padding: 0 1rem;
+    }
+
+    .card .text-wrapper {
+      position: relative;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+    }
+
+    main {
+      margin: 1rem 1rem;
+      font-family: "Inter", sans-serif;
+      color: #333;
+    }
+
+    .card>div {
+      position: relative;
+    }
+
+    .card .overlay h2 {
+      position: absolute;
+      margin-left: 1rem;
+      left: 0;
+      right: 0;
+      bottom: 0;
+
+      color: #fff;
+      font-size: 1.5rem;
+      font-weight: 600;
+      text-align: left;
+      text-shadow: 0.5rem 1rem 2rem black;
+    }
+
+    .row {
+      display: flex;
+    }
+
+    .column {
+      flex: 50%;
+      margin: 20px;
+
+    }
+  </style>
+  <!-- background image -->
+  <div class="hero">
+    <img src="https://marriott.byu.edu/diversity-inclusion/wp-content/uploads/sites/61/DI-e1611180850224-960x406.jpg"
+      alt="Marriot School Building">
+
+    <h1 class="logo">Information Systems</h1>
+
+    <br>
+    <br>
+    <br>
+
+    <div class="row">
+      <div class="column">
+        <h2>Program Overview</h2>
+
+        <p>The BS Information Systems program is available as a four-year traditional degree or as a five-year
+          integrated
+          option where students earn both the BS IS and MISM degrees. The BS IS program is a 64-credit degree including
+          pre-management, junior core, management core, and a capstone.</p>
+
+        <h2>Curriculum</h2>
+
+        <p> Information systems students learn to define, develop, and maintain the information system infrastructure
+          that
+          supports the operations of all businesses, governments, and other institutions. The BS Information Systems
+          degree
+          develops the ability to function effectively as a professional, applying state-of-the-art technology in
+          solving
+          business problems. Students are trained in business and information systems and taught to understand complex
+          business
+          environments.</p>
+
+        <p>Built on a solid foundation of business courses, the curriculum advances students’ understanding of
+          technologies
+          in the design and development of information systems. They gain technical expertise in systems analysis;
+          systems
+          design and implementation; database development and management; programming; telecommunications networking;
+          2-tier, 3-tier, and n-tier application development; and web application development.</p>
+        <a href="https://marriottschool.byu.edu/infosys/" target="_parent"><button>Marriot School</button></a>
+      </div>
+
+      <!-- This is where we put the ptags to call the java script
+      also a button with the marriot school link https://marriottschool.byu.edu/infosys/ -->
+      <div class="column">
+
+
+        <h2>Chances of getting in!?</h2>
+
+        IS 201:
+        <select name="list" id="is201">
+          <option value="0">A</option>
+          <option value="1">A-</option>
+          <option value="2">B+</option>
+          <option value="3">B</option>
+          <option value="4">B-</option>
+          <option value="5">C+</option>
+          <option value="6">C</option>
+          <option value="7">C-</option>
+          <option value="8">D+</option>
+          <option value="9">D</option>
+          <option value="10">D-</option>
+          <option value="11">E</option>
+        </select>
+        Retake <input id="retake201" type="checkbox" />
+        <br />
+        <br />
+        IS 303 / CS 142:
+        <select name="list" id="is303">
+          <option value="0">A</option>
+          <option value="1">A-</option>
+          <option value="2">B+</option>
+          <option value="3">B</option>
+          <option value="4">B-</option>
+          <option value="5">C+</option>
+          <option value="6">C</option>
+          <option value="7">C-</option>
+          <option value="8">D+</option>
+          <option value="9">D</option>
+          <option value="10">D-</option>
+          <option value="11">E</option>
+        </select>
+        Retake <input id="retake303" type="checkbox" />
+        <br />
+        <br />
+        ​ ACC 200:
+        <select name="list" id="acc200">
+          <option value="0">A</option>
+          <option value="1">A-</option>
+          <option value="2">B+</option>
+          <option value="3">B</option>
+          <option value="4">B-</option>
+          <option value="5">C+</option>
+          <option value="6">C</option>
+          <option value="7">C-</option>
+          <option value="8">D+</option>
+          <option value="9">D</option>
+          <option value="10">D-</option>
+          <option value="11">E</option>
+        </select>
+        Retake <input id="retakeAcc200" type="checkbox" />
+        <br />
+        <br />
+        BYU Overall GPA:
+        <input type="text" id="GPA" />
+        <br />
+        <br />
+        BYU Last 30 Credits GPA: <input type="text" id="last30" />
+        <br />
+        <br />
+        <button id="calculate" onclick="calcGPA()">CALCULATE</button>
+        <br />
+        <br />
+        <button id="Reset" onclick="clearCircle()">RESET</button>
+        <br />
+        <br />
+        <svg height="100" width="100">
+          <circle id="myCircle" cx="50" cy="50" r="40" stroke="black" stroke-width="3" fill="white" display="none" />
+        </svg>
+        <p id="finalGpa"></p>
+
+
+      </div>
+    </div>
+
+    <br>
+    <br>
+    <br>
+    <main>
+      <h2>IS Faculty Directory</h2>
+      <div class=" directory">
+
+        <div class="card">
+          <div class="overlay">
+            <img src="https://burtonbyu.com/images/prof/allen.jpg" alt="Gove Allen">
+            <h2>Gove Allen</h2>
+          </div>
+          <div class="text-wrapper">
+            <h3>Research</h3>
+            <p class="research">Data access policy violations by company employees; reducing violations through
+              interface designs.</p>
+            <h3>Interests</h3>
+            <p class="interests">Eighteenth century American history reenactment and running period print shop.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="overlay">
+            <img src="https://burtonbyu.com/images/prof/anderson-b.jpg" alt="Bonnie Anderson">
+            <h2>Bonnie Anderson</h2>
+          </div>
+          <div class="text-wrapper">
+            <h3>Research</h3>
+            <p class="research">Neurosecurity (fMRI, EEG, Eye-Tracking, mouse-cursor tracking) to make computer security
+              easier for users.</p>
+            <h3>Interests</h3>
+            <p class="interests">Experience design, travel, and music.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="overlay">
+            <img src="https://burtonbyu.com/images/prof/anderson-g.jpg" alt="Greg Anderson">
+            <h2>Greg Anderson</h2>
+          </div>
+          <div class="text-wrapper">
+            <h3>Research</h3>
+            <p class="research">Team collaboration, group cohesion, and building effective teams. Creating effective
+              information systems curriculum. </p>
+            <h3>Interests</h3>
+            <p class="interests">How to take a process, person, curriculum, anything, and improve it.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="overlay">
+            <img src="https://marriottschool.byu.edu/msmadmin/securefile/empphoto?pid=71802" alt="Spencer Hilton">
+            <h2>Spencer Hilton</h2>
+          </div>
+          <div class="text-wrapper">
+            <h3>Research</h3>
+            <p class="research">Effective Teaching Methods in Introductory Programming Courses, Team Cohesion</p>
+            <h3>Interests</h3>
+            <p class="interests">Teaching, people, spending time with family, seeing new places, food, BYU sports, and
+              golf</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="overlay">
+            <img src="https://burtonbyu.com/images/prof/gaskin.jpg" alt="James Gaskin">
+            <h2>James Gaskin</h2>
+          </div>
+          <div class="text-wrapper">
+            <h3>Research</h3>
+            <p class="research">Human/Robot interaction</p>
+            <h3>Interests</h3>
+            <p class="interests">Gymnastics and 3D printing</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="overlay">
+            <img src="https://burtonbyu.com/images/prof/jenkins.jpg" alt="Jeff Jenkins">
+
+            <h2> Jeff Jenkins</h2>
+          </div>
+          <div class="text-wrapper">
+            <h3>Research</h3>
+            <p class="research">
+              How people use the computer mouse, touchscreen, keyboard and other computer devices to
+              predict cognitve and emotional states.
+            </p>
+
+            <h3>Interests</h3>
+            <p class="interests">Software development, cybersecurity, spending time outdoors, and playing with my kids!
+            </p>
+
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="overlay">
+            <img src="https://burtonbyu.com/images/prof/keith.jpg" alt="Mark Keith">
+            <h2> Mark Keith</h2>
+          </div>
+          <div class="text-wrapper">
+            <h3>Research</h3>
+            <p class="research">How privacy concerns affect decisions we make when using apps, technologies,
+              transactions, and healthcare.</p>
+            <h3>Interests</h3>
+            <p class="interests">DIY home improvement projects, snowboarding, learning new technologies.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="overlay">
+            <img src="https://burtonbyu.com/images/prof/kettles.jpg" alt="Degan Kettles">
+            <h2>Degan Kettles</h2>
+          </div>
+          <div class="text-wrapper">
+            <h3>Research</h3>
+            <p class="research">Pedagogical techniques that help students learn better</p>
+            <h3>Interests</h3>
+            <p class="interests">AWS and software development, triathlons and the best places to eat in Utah County</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="overlay">
+            <img src="https://burtonbyu.com/images/prof/liddle.jpg" alt="Steve Liddle">
+            <h2>Steve Liddle</h2>
+          </div>
+          <div class="text-wrapper">
+            <h3>Research</h3>
+            <p class="research">Extracting and converting unstructured and semi-structured data into human and
+              computer-usable forms.</p>
+            <h3>Interests</h3>
+            <p class="interests">Mobile software development. Influencing online decisions and automating deception
+              detection.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="overlay">
+            <img src="https://burtonbyu.com/images/prof/meservy.jpg" alt="Tom Meservy">
+            <h2>Tom Meservy</h2>
+          </div>
+          <div class="text-wrapper">
+            <h3>Research</h3>
+            <p class="research">Influencing online decision making and automatically detecting human deception.</p>
+            <h3>Interests</h3>
+            <p class="interests">Programming, riding rzrs, finding good deals online, international travel, skiing.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="overlay">
+            <img src="https://marriottschool.byu.edu/msmadmin/securefile/empphoto?pid=42655" alt="Katy Reese">
+            <h2>Katy Reese</h2>
+          </div>
+          <div class="text-wrapper">
+            <h3>Research</h3>
+            <p class="research">Student learning</p>
+            <h3>Interests</h3>
+            <p class="interests">Data Analytics, traveling, cooking, hiking</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="overlay">
+            <img src="https://marriottschool.byu.edu/msmadmin/securefile/empphoto?pid=1386" alt="Ryan Schuetzler">
+            <h2>Ryan Schuetzler</h2>
+          </div>
+          <div class="text-wrapper">
+            <h3>Research</h3>
+            <p class="research">Chatbots, and how chatbot design affects behavior; building chatbots to do cool things
+            </p>
+            <h3>Interests</h3>
+            <p class="interests">Scuba diving, building computers, trying to get my kids to want to major in IS in 10
+              years</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="overlay">
+            <img src="https://burtonbyu.com/images/prof/twyman.jpg" alt="Nathan Twyman">
+            <h2>Nathan Twyman</h2>
+          </div>
+          <div class="text-wrapper">
+            <h3>Research</h3>
+            <p class="research">Tranformative information systems (data analytics, human behavior sensing, and
+              gamification)</p>
+            <h3>Interests</h3>
+            <p class="interests">Family activities, basktball, raquetball, family history, and learning new things.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="overlay">
+            <img src="https://burtonbyu.com/images/prof/wells.jpg" alt="Taylor Wells">
+            <h2>Taylor Wells</h2>
+          </div>
+          <div class="text-wrapper">
+            <h3>Research</h3>
+            <p class="research">How technology both influences and is impacted by individual cognitive processing and
+              emotion</p>
+            <h3>Interests</h3>
+            <p class="interests">I have an unhealthy obsession with gourmet root beer, love reading (especially fantasy
+              books), am pretty handy with tools (mostly working on my house), occasionally play retro video games, and
+              constantly tinker with technology.</p>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script>
+      // highlights is201 to start with
+      window.onload = resetToBasic();
+
+      function resetToBasic() {
+        document.getElementById("is201").focus();
+      };
+
+      // this function checks if the user entered anything into inputboxes or the checked box
+      // I pass an id, value, and name in the function as parameters. I get those parameters on lines 110-114
+      function checkValue(id, value, name) {
+        if (value == "") {
+          alert("You must enter a value in the " + name + " text box ");
+          document.getElementById(id).focus();
+          return true;
+        }
+      }
+      //   this function helps me deduct points if the user retook one of the classes.
+      // same as above, I pass in the ID's as parameters so I can check which class the user had to retake
+      function getValue(popUpId, checkBoxId) {
+        var scores = [4, 3.7, 3.4, 3, 2.7, 2.4, 2, 1.7, 1.4, 1, 0];
+        var index = document.getElementById(popUpId).value;
+        if (index == "") {
+          return index;
+        } else {
+          index *= 1;
+        }
+        var retake = document.getElementById(checkBoxId).checked;
+        if (retake) {
+          index = index + 1;
+        }
+        return scores[index];
+      }
+
+      function round(value, decimals) {
+        return Number(Math.round(value + "e" + decimals) + "e-" + decimals);
+      }
+
+      function calcGPA() {
+        //   this first 3 variables are used for the getValue fuction above
+        var grade201 = getValue("is201", "retake201");
+        var grade303 = getValue("is303", "retake303");
+        var gradeAcc200 = getValue("acc200", "retakeAcc200");
+        var byuGpa = document.getElementById("GPA").value;
+        var last30 = document.getElementById("last30").value;
+        // these are used for the checkValue function above
+        if (checkValue("is201", grade201, "IS 201")) return;
+        if (checkValue("is303", grade303, "IS 303 / CS 142")) return;
+        if (checkValue("acc200", gradeAcc200, "ACC 200")) return;
+        if (checkValue("GPA", byuGpa, "BYU Overall GPA")) return;
+        if (checkValue("last30", last30, "BYU Last 30 Credits GPA")) return;
+        // this is how I calculate the weighted GPA
+        var total =
+          grade201 * 0.3 +
+          grade303 * 0.3 +
+          gradeAcc200 * 0.05 +
+          byuGpa * 0.15 +
+          last30 * 0.2;
+        // this is the if statement/turinary for the circle
+        var color = total > 3.7 ? "green" : total > 3.4 ? "yellow" : "red";
+        var circle = document.getElementById("myCircle");
+        circle.style.fill = color;
+        circle.style.display = "block";
+        document.getElementById("finalGpa").innerHTML =
+          "Total GPA = " + round(total, 2);
+      }
+
+      function clearCircle() {
+        // document.location.reload();
+        document.getElementById("finalGpa").innerHTML = "";
+        var circle = document.getElementById("myCircle");
+        circle.style.fill = "none";
+        circle.style.display = "none";
+        document.getElementById("GPA").value = "";
+        document.getElementById("last30").value = "";
+        document.getElementById("is201").value = "0";
+        document.getElementById("is303").value = "0";
+        document.getElementById("acc200").value = "0";
+        document.getElementById("retakeAcc200").checked = false;
+        document.getElementById("retake201").checked = false;
+        document.getElementById("retake303").checked = false;
+        document.getElementById("is201").focus();
+      }
+    </script>
+</body>
+
+</html>

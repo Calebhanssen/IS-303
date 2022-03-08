@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <label for="companyName">Company Name:</label>
+  <br>
+  <input type="text" id="companyName">
+  <br>
+  <p id="myOutput"></p>
+  <br>
+  <button type="button" onclick="storeData();">Store</button>
+  <button type="button" onclick="sessionStorage.clear();">Clear</button>
+  <button type="button" onclick="restoreData();">Restore</button>
+</body>
+<script>
+  let sName;
+
+  function storeData() {
+    sName = document.getElementById("companyName").value;
+
+    sessionStorage.setItem("compName", sName);
+    localStorage.setItem("companyName", sName);
+
+    document.getElementById("companyName").value = "";
+
+  }
+
+  function restoreData() {
+    document.getElementById("companyName").value = sessionStorage.getItem("compName");
+  }
+</script>
+
+</html>
