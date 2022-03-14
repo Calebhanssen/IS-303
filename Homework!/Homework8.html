@@ -1,0 +1,73 @@
+<!-- Caleb Hanssen Homework 8
+section 04
+akljdsfl;kajdfl;kajsdfl;kajsdl;fkja;sldkfj -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=
+    , initial-scale=1.0">
+  <title>ISMAREED</title>
+  <link rel="stylesheet" type="text/css" href="loading-bar.css" />
+  <script type="text/javascript" src="loading-bar.js"></script>
+
+</head>
+
+<body onload="hideHeart()">
+
+  <a>Welcome to BYU's Information Systems Dating Site</a>
+  <br><br>
+  <label for="phrase">What is the love phrase: </label>
+  <input type="text" id="phrase">
+  <br><br>
+  <label for="firstPerson">Enter the first person's first and last name: </label>
+  <input type="text" id="firstPerson">
+  <br><br>
+  <label for="secondPerson">Enter the second person's first and last name: </label>
+  <input type="text" id="secondPerson">
+  <br><br>
+  <input type="checkbox" id="check1">
+  <label for="check1">We will communicate often</label>
+  <br><br>
+  <input type="checkbox" id="check2">
+  <label for="check2">We will not be selfish</label>
+  <br><br>
+  <input type="checkbox" id="check3">
+  <label for="check3">We will serve each other</label>
+  <br><br>
+  <input type="checkbox" id="check4">
+  <label for="check4">My spouse will be my best friend</label>
+  <br><br>
+  <input type="checkbox" id="check5">
+  <label for="check5">We will remember God</label>
+  <br><br>
+  <input type="button" onclick="HeartCalc()" value="Click me">
+  <input type="button" onclick="eraseInput()" value="Reset">
+
+  <br>
+  <p id="output" style="text-align:center;"></p>
+
+
+  <style>
+
+  </style>
+  <script>
+    function eraseInput() {
+      document.getElementById("phrase").value = "";
+      document.getElementById("firstPerson").value = "";
+      document.getElementById("secondPerson").value = "";
+      document.getElementById("check1").checked = false;
+      document.getElementById("check2").checked = false;
+      document.getElementById("check3").checked = false;
+      document.getElementById("check4").checked = false;
+      document.getElementById("check5").checked = false;
+      document.getElementById("phrase").focus();
+      //BE SURE TO ADD REMOVING THE HEART TO THIS FUNCTION
+
+    }
+  </script>
+
+</body>
+
+</html>
