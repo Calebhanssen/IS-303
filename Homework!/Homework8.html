@@ -16,39 +16,20 @@ akljdsfl;kajdfl;kajsdfl;kajsdl;fkja;sldkfj -->
     /* these are the styles that were given*/
     div.LoveHeart {
       height: 5em;
-      position: absolute;
-      right: 5%;
-      bottom: 10%
+      position: relative
     }
 
     div.LoveHeart p {
-      margin: auto;
-      width: 100%;
-      background: rgba(255, 255, 255, 0);
-      color: rgb(0, 0, 0);
+      margin: 0;
+      background: white;
+      color: red;
       font-weight: bold;
-      font-size: 100%;
-      position: relative;
-      top: 80%;
-      text-align: center;
-    }
-
-    div.ldBar-label {
-      width: 100%;
-      text-align: center;
-      bottom: 25%;
-      content: "%";
-      font-weight: bold;
+      font-size: 150%;
       position: absolute;
-    }
-
-    div.ldBar-label:after {
-      content: "%";
-    }
-
-    div.header {
-      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-      font-weight: bolder;
+      top: 50%;
+      left: 50%;
+      margin-right: -50%;
+      transform: translate(-50%, -50%)
     }
   </style>
 </head>
@@ -99,13 +80,13 @@ akljdsfl;kajdfl;kajsdfl;kajsdl;fkja;sldkfj -->
     <input type="button" value="Reset" onclick="ClearTheLove()">
   </div>
   <!-- manually drawing the heart loading bar-->
-  <div class="LoveHeart" data-type="fill" id="iPowerScore" data-path="M90.5,23.2c0-12.5-10.2-22.7-22.7-22.7
+  <!-- <div class="LoveHeart" data-type="fill" id="iPowerScore" data-path="M90.5,23.2c0-12.5-10.2-22.7-22.7-22.7
         c-13.6,0-20.9,8.6-22.3,13.8C44.3,8.9,
         35.1,0.5,23.2,0.5C10.7,0.5,0.5,10.7,
         0.5,23.2c0,22.2,36.5,45.3,45,55.9
         C53.5,67.3,90.5,46.3,90.5,23.2z">
     <p id="output"></p>
-  </div>
+  </div> -->
 
   <script>
     function FindTheLove() {
@@ -148,7 +129,7 @@ akljdsfl;kajdfl;kajsdfl;kajsdl;fkja;sldkfj -->
       var iFactor = 1;
       var iPower;
       var adder = 0;
-      var godCheck = 0;
+      var followGod = 0;
       var finalAdder = 0;
       var cont = document.getElementById("checks").children;
 
@@ -156,16 +137,16 @@ akljdsfl;kajdfl;kajsdfl;kajsdl;fkja;sldkfj -->
         if (cont[i].checked && document.getElementById("check5").checked == false) {
           adder = adder + .25;
           finalAdder = adder;
-          godCheck = 0;
+          followGod = 0;
         } else if (cont[i].checked && document.getElementById("check5").checked == true) {
           adder = adder + .25;
           finalAdder = adder - .25;
-          godCheck = .50;
+          followGod = .50;
         }
       }
 
       //calculate iPower based on checkboxes
-      iPower = Math.ceil(((iLoveCount / sLovePhrase.length) * 22) * (iFactor + finalAdder + godCheck));
+      iPower = Math.ceil(((iLoveCount / sLovePhrase.length) * 22) * (iFactor + finalAdder + followGod));
 
       //display messages based on iPower value
       if (iPower >= 100) {
