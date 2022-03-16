@@ -1,6 +1,9 @@
 <!-- Caleb Hanssen Homework 8
 section 04
-akljdsfl;kajdfl;kajsdfl;kajsdl;fkja;sldkfj -->
+This is a program that takes the love phrase and the names of both people and then removes the spaces and compares them adding a
+ point for every similar letter. Then it adds a point and .25 or .5 depending on the checkbox answers.
+ It calculates the total score out of 100 and fills the heart to represent whether or not you should get married.
+-->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,26 +12,24 @@ akljdsfl;kajdfl;kajsdfl;kajsdl;fkja;sldkfj -->
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>DateMe?</title>
-  <link rel="stylesheet" type="text/css" href="loadingBar.css">
-  <link rel="stylesheet" type="text/css" href="HW8css.css">
-  <script type="text/javascript" src="loadingBar.js"></script>
+  <link rel="stylesheet" type="text/css" href="loading-bar.css">
+  <script type="text/javascript" src="loading-bar.js"></script>
   <style>
     /* these are the styles that were given*/
     div.LoveHeart {
       height: 5em;
-      position: relative
+      position: relative;
     }
 
-    div.LoveHeart p {
+    p {
       margin: 0;
       background: white;
       color: red;
       font-weight: bold;
       font-size: 150%;
-      position: absolute;
       top: 50%;
       left: 50%;
-      margin-right: -50%;
+      margin-right: 100%;
       transform: translate(-50%, -50%)
     }
   </style>
@@ -40,115 +41,125 @@ akljdsfl;kajdfl;kajsdfl;kajsdl;fkja;sldkfj -->
     <h1>Welcome to The Dating Calculator</h1>
   </div>
 
+  <form>
+  </form>
   <div>
-    <label for="LovePhrase">What is the love phrase:</label>
-    <input type="text" id="LovePhrase" size="20" autofocus>
+    <form>
+      <label for="LovePhrase">What is the love phrase:</label>
+      <input type="text" id="LovePhrase" size="20" autofocus>
 
-    <br> <br>
+      <br> <br>
 
-    <label for="FullName1">Enter the first person's first and last names:</label>
-    <input type="text" id="FullName1">
+      <label for="FullName1">Enter the first person's first and last names:</label>
+      <input type="text" id="FullName1">
 
-    <br><br>
-    <label for="FullName2">Enter the second person's first and last names:</label>
-    <input type="text" id="FullName2">
+      <br><br>
+      <label for="FullName2">Enter the second person's first and last names:</label>
+      <input type="text" id="FullName2">
+
+      <br><br>
+
+      <input type="checkbox" id="cbCommunicate">
+      <label>We will communicate often</label>
+      <br><br>
+      <input type="checkbox" id="cbNotSelfish">
+      <label>We will not be selfish</label>
+      <br><br>
+      <input type="checkbox" id="cbServeOther">
+      <label>We will serve each other</label>
+      <br><br>
+      <input type="checkbox" id="cbBestFriend">
+      <label>My spouse will be my best friend</label>
+      <br><br>
+      <input type="checkbox" id="cbGod">
+      <label>We will remember God</label>
+    </form>
+
   </div>
 
-  <br><br>
 
-  <div id="checks">
-    <input type="checkbox" id="check1">
-    <label for="check1">We will communicate often</label>
+  <div id="LoveHeart" class="ldBar label-center" data-type="fill" data-value="0" style="width:500px;margin:auto"
+    data-stroke="red" data-stroke-width="15" data-path="M90.5,23.2c0-12.5-10.2-22.7-22.7-22.7
+  c-13.6,0-20.9,8.6-22.3,13.8C44.3,8.9,
+  35.1,0.5,23.2,0.5C10.7,0.5,0.5,10.7,
+  0.5,23.2c0,22.2,36.5,45.3,45,55.9
+  C53.5,67.3,90.5,46.3,90.5,23.2z">
     <br><br>
-    <input type="checkbox" id="check2">
-    <label for="check2">We will not be Selfish</label>
-    <br><br>
-    <input type="checkbox" id="check3">
-    <label for="check3">We will serve each other</label>
-    <br><br>
-    <input type="checkbox" id="check4">
-    <label for="check4">My spouse will be my best friend</label>
-    <br><br>
-    <input type="checkbox" id="check5">
-    <label for="check5">We will remember God</label>
+    <p id="output"></p>
   </div>
+
+
 
   <br><br>
 
   <div class="button">
     <input type="button" value="Click Me" onclick="FindTheLove()">
-    <input type="button" value="Reset" onclick="ClearTheLove()">
+    <input type="button" value="Reset" onclick="Breakup()">
   </div>
-  <!-- manually drawing the heart loading bar-->
-  <!-- <div class="LoveHeart" data-type="fill" id="iPowerScore" data-path="M90.5,23.2c0-12.5-10.2-22.7-22.7-22.7
-        c-13.6,0-20.9,8.6-22.3,13.8C44.3,8.9,
-        35.1,0.5,23.2,0.5C10.7,0.5,0.5,10.7,
-        0.5,23.2c0,22.2,36.5,45.3,45,55.9
-        C53.5,67.3,90.5,46.3,90.5,23.2z">
-    <p id="output"></p>
-  </div> -->
+
+
+
 
   <script>
     function FindTheLove() {
-
-      //iLovecount with name and love phrase
-      //declare variables and change to uppercase
+      //Define variables
       var sLovePhrase = document.getElementById("LovePhrase").value.toUpperCase();
-      var name1 = document.getElementById("FullName1").value.toUpperCase();
-      var name2 = document.getElementById("FullName2").value.toUpperCase();
-      var iLoveCount = 0;
-      // parse variables into individual characters
-      function splitString(myString) {
-        var myArray = [];
-        for (let i = 0; i < myString.length; i++) {
-          myArray[i] = myString.substr(i, 1);
-        }
-        return myArray;
-      }
-      //call parsing function to make strings into array
-      var aLovePhrase = splitString(sLovePhrase);
-      var aName1 = splitString(name1);
-      var aName2 = splitString(name2);
-      // for loop to compare each name to the love phrase
-      function compareName(nameParam) {
-        for (let i = 0; i < nameParam.length; i++) {
-          for (let j = 0; j < aLovePhrase.length; j++) {
-            if (aLovePhrase[j] === nameParam[i]) {
-              iLoveCount++;
-            } else {
-              iLoveCount = iLoveCount;
-            }
+      var sName1 = document.getElementById("FullName1").value.toUpperCase();
+      var sName2 = document.getElementById("FullName2").value.toUpperCase();
+      var sCombName = "";
+      var iFactor = 1;
+      var iLoveCounter = 0;
+      var iPower = 0;
+      // let bCommunicate = document.getElementById("cbCommunicate").value.checked;
+      // let bNotSelfish = document.getElementById("cbNotSelfish").value.checked;
+      // let bServe = document.getElementById("cbServeOther").value.checked;
+      // let bBestFriend = document.getElementById("cbBestFriend").value.checked;
+      // let bGod = document.getElementById("cbGod").value.checked;
+
+
+      //Remove spaces from the variables
+      sName1 = sName1.replace(/\s+/g, "");
+      sName2 = sName2.replace(/\s+/g, "");
+      sLovePhrase = sLovePhrase.replace(/\s+/g, "");
+
+      sCombName = sName1 + sName2
+
+      //Compare the names to one another
+      for (let iCLP = 0; iCLP < sLovePhrase.length; iCLP++) {
+        for (let iCCN = 0; iCCN < sCombName.length; iCCN++) {
+          if (sLovePhrase.charAt(iCLP) == sCombName.charAt(iCCN)) {
+
+            iLoveCounter = iLoveCounter + 1
+
           }
         }
       }
-      //call function to compare name to love phrase
-      compareName(aName1);
-      compareName(aName2);
 
-      //iFactor count for checkboxes
-      var iFactor = 1;
-      var iPower;
-      var adder = 0;
-      var followGod = 0;
-      var finalAdder = 0;
-      var cont = document.getElementById("checks").children;
-
-      for (var i = 0; i < cont.length; i++) {
-        if (cont[i].checked && document.getElementById("check5").checked == false) {
-          adder = adder + .25;
-          finalAdder = adder;
-          followGod = 0;
-        } else if (cont[i].checked && document.getElementById("check5").checked == true) {
-          adder = adder + .25;
-          finalAdder = adder - .25;
-          followGod = .50;
-        }
+      //determine the amount of points per checkbox
+      if (document.getElementById("cbCommunicate").checked) {
+        iFactor = iFactor + .25;
       }
 
-      //calculate iPower based on checkboxes
-      iPower = Math.ceil(((iLoveCount / sLovePhrase.length) * 22) * (iFactor + finalAdder + followGod));
+      if (document.getElementById("cbNotSelfish").checked) {
+        iFactor = iFactor + .25;
+      }
 
-      //display messages based on iPower value
+      if (document.getElementById("cbServeOther").checked) {
+        iFactor = iFactor + .25;
+      }
+
+      if ((document.getElementById("cbBestFriend").checked)) {
+        iFactor = iFactor + .25;
+      }
+
+      if ((document.getElementById("cbGod").checked)) {
+        iFactor = iFactor + .5;
+      }
+
+      iPower = Math.ceil(((iLoveCounter / sLovePhrase.length) * 22) * iFactor);
+
+      drawBar(iPower);
+
       if (iPower >= 100) {
         document.getElementById("output").innerHTML = "Perfect Marriage"
       } else if (iPower >= 85) {
@@ -156,16 +167,34 @@ akljdsfl;kajdfl;kajsdfl;kajsdl;fkja;sldkfj -->
       } else if (iPower >= 70) {
         document.getElementById("output").innerHTML = "It might work"
       } else {
-        document.getElementById("output").innerHTML = "NO GO!"
+        document.getElementById("output").innerHTML = "NO GO!";
       }
+    }
 
-      //place percentage into heart
+
+    function drawBar(iPower) {
+      //get data to load the heart from the website
+      var bar1 = new ldBar(document.getElementById('LoveHeart'));
+
       bar1.set(iPower);
     }
 
 
-    function ClearTheLove() {
-      location.reload();
+
+    //calculate iPower based on checkboxes
+
+
+    //display messages based on iPower value
+
+
+
+
+
+
+    // Clear the Function
+    function Breakup() {
+      document.location.reload();
+
 
     }
   </script>

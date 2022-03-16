@@ -364,7 +364,7 @@
               img: "",
               path: "M10 10L90 10M90 8M90 12",
               "fill-dir": "btt",
-              fill: "#25b",
+              fill: "#FF0000",
               "fill-background": "#ddd",
               "fill-background-extrude": 3,
               "pattern-size": null,
