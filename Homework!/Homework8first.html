@@ -4,6 +4,10 @@ This is a program that takes the love phrase and the names of both people and th
  point for every similar letter. Then it adds a point and .25 or .5 depending on the checkbox answers.
  It calculates the total score out of 100 and fills the heart to represent whether or not you should get married.
 -->
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,10 +31,15 @@ This is a program that takes the love phrase and the names of both people and th
       color: red;
       font-weight: bold;
       font-size: 150%;
-      top: 50%;
-      left: 50%;
-      margin-right: 100%;
+      top: 90%;
+      left: 10%;
+      margin-left: 40%;
       transform: translate(-50%, -50%)
+    }
+
+    h1 {
+      color: red;
+      text-align: center;
     }
   </style>
 </head>
@@ -41,40 +50,46 @@ This is a program that takes the love phrase and the names of both people and th
     <h1>Welcome to The Dating Calculator</h1>
   </div>
 
-  <form>
-  </form>
+
   <div>
-    <form>
-      <label for="LovePhrase">What is the love phrase:</label>
-      <input type="text" id="LovePhrase" size="20" autofocus>
+    <fieldset>
+      <form>
+        <label for="LovePhrase">What is the love phrase:</label>
+        <input type="text" id="LovePhrase" size="20" autofocus>
 
-      <br> <br>
+        <br> <br>
 
-      <label for="FullName1">Enter the first person's first and last names:</label>
-      <input type="text" id="FullName1">
+        <label for="FullName1">Enter the first person's first and last names:</label>
+        <input type="text" id="FullName1">
 
-      <br><br>
-      <label for="FullName2">Enter the second person's first and last names:</label>
-      <input type="text" id="FullName2">
+        <br><br>
+        <label for="FullName2">Enter the second person's first and last names:</label>
+        <input type="text" id="FullName2">
 
-      <br><br>
+        <br><br>
 
-      <input type="checkbox" id="cbCommunicate">
-      <label>We will communicate often</label>
-      <br><br>
-      <input type="checkbox" id="cbNotSelfish">
-      <label>We will not be selfish</label>
-      <br><br>
-      <input type="checkbox" id="cbServeOther">
-      <label>We will serve each other</label>
-      <br><br>
-      <input type="checkbox" id="cbBestFriend">
-      <label>My spouse will be my best friend</label>
-      <br><br>
-      <input type="checkbox" id="cbGod">
-      <label>We will remember God</label>
-    </form>
+        <input type="checkbox" id="cbCommunicate">
+        <label>We will communicate often</label>
+        <br><br>
+        <input type="checkbox" id="cbNotSelfish">
+        <label>We will not be selfish</label>
+        <br><br>
+        <input type="checkbox" id="cbServeOther">
+        <label>We will serve each other</label>
+        <br><br>
+        <input type="checkbox" id="cbBestFriend">
+        <label>My spouse will be my best friend</label>
+        <br><br>
+        <input type="checkbox" id="cbGod">
+        <label>We will remember God</label>
+      </form>
+    </fieldset>
 
+  </div>
+
+  <div class="button">
+    <input type="button" value="Click Me" onclick="FindTheLove()">
+    <input type="button" value="Reset" onclick="Breakup()">
   </div>
 
 
@@ -88,18 +103,6 @@ This is a program that takes the love phrase and the names of both people and th
     <p id="output"></p>
   </div>
 
-
-
-  <br><br>
-
-  <div class="button">
-    <input type="button" value="Click Me" onclick="FindTheLove()">
-    <input type="button" value="Reset" onclick="Breakup()">
-  </div>
-
-
-
-
   <script>
     function FindTheLove() {
       //Define variables
@@ -110,11 +113,6 @@ This is a program that takes the love phrase and the names of both people and th
       var iFactor = 1;
       var iLoveCounter = 0;
       var iPower = 0;
-      // let bCommunicate = document.getElementById("cbCommunicate").value.checked;
-      // let bNotSelfish = document.getElementById("cbNotSelfish").value.checked;
-      // let bServe = document.getElementById("cbServeOther").value.checked;
-      // let bBestFriend = document.getElementById("cbBestFriend").value.checked;
-      // let bGod = document.getElementById("cbGod").value.checked;
 
 
       //Remove spaces from the variables
@@ -180,23 +178,21 @@ This is a program that takes the love phrase and the names of both people and th
     }
 
 
-
-    //calculate iPower based on checkboxes
-
-
-    //display messages based on iPower value
-
-
-
-
-
-
-    // Clear the Function
-    function Breakup() {
+    function Breakups() {
       document.location.reload();
-
-
     }
+    // Clear the Function and set focus
+    //   function Breakup() {
+    //     document.getElementById("LovePhrase").value = "";
+    //     document.getElementById("FullName1").value = "";
+    //     document.getElementById("FullName2").value = "";
+    //     document.getElementById("cbCommunicate").checked = false;
+    //     document.getElementById("cbNotSelfish").checked = false;
+    //     document.getElementById("cbServeOther").checked = false;
+    //     document.getElementById("cbBestFriend").checked = false;
+    //     document.getElementById("cbGod").checked = false;
+    //     document.getElementById("LovePhrase").focus();
+    //   }
   </script>
 
 </body>
