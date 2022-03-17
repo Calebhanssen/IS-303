@@ -1,0 +1,13 @@
+{
+  "folders": [
+	{
+		"path": "../FirstNodeApp"
+	},
+	{
+		"path": ".."
+	}
+],
+  "settings": {
+    "liveServer.settings.multiRootWorkspaceName": "IS 303"
+  }
+}
