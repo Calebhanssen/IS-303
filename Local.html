@@ -1,0 +1,57 @@
+<!-- Caleb Hanssen
+section 04 
+Test # 2 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test2</title>
+</head>
+
+<body onload="loadData()">
+  <form>
+    <label for="txtFirstName">First Name:</label>
+    <input type="text" id="txtFirstName">
+    <br><br>
+    <label for="txtLastName">Last Name:</label>
+    <input type="text" id="txtLastName">
+    <br><br>
+    <button type="button" onclick="storeData();">Store Data</button>
+    <button type="button" onclick="loadData();">Display Data</button>
+    <button type="button" onclick="clearData();">Clear Data</button>
+  </form>
+  <p id="myOutput"></p>
+  <script>
+    function loadData() {
+      document.getElementById("txtFirstName").value = localStorage.getItem("firstName");
+      document.getElementById("txtLastName").value = localStorage.getItem("lastName");
+    }
+
+    function clearData() {
+      localStorage.clear();
+
+      document.getElementById("myOutput").innerHTML = "";
+      document.getElementById("txtFirstName").value = "";
+      document.getElementById("txtLastName").value = "";
+    }
+
+    function storeData() {
+      let sFirst = document.getElementById("txtFirstName").value;
+      let sLast = document.getElementById("txtLastName").value;
+
+      localStorage.setItem("firstName", sFirst);
+      localStorage.setItem("lastName", sLast);
+
+      document.getElementById("myOutput").innerHTML = localStorage.getItem("firstName") + " " +
+        localStorage.getItem("lastName");
+
+      document.getElementById("txtFirstName").value = "";
+      document.getElementById("txtLastName").value = "";
+    }
+  </script>
+</body>
+
+</html>

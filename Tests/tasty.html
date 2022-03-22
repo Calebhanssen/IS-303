@@ -1,0 +1,72 @@
+<!-- Caleb Hanssen
+Section 4 - Exam 2 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    class Team {
+      constructor(fCoachName, lCoachName, sTeamName, iWins, iLosses) {
+        this.sFirstNameCoach = fCoachName;
+        this.sLastNameCoach = lCoachName;
+        this.sTeamName = sTeamName;
+        this.iWins = iWins;
+        this.iLosses = iLosses;
+
+      }
+
+      method() //method that returns a string of team name, wins, losses, coach name
+      {
+        return (this.sTeamName + " have won " + this.iWins + "and lost " + this.iLosses +
+          " games and their coach is  " + this.sFirstName + this.sLastNameCoach)
+      }
+    }
+
+    class SoccerTeam extends Team {
+      constructor(iTeamDraw, iTeamPoints) {
+        super();
+        this.iTeamDraw = iTeamDraw;
+        this.iTeamPoints = iTeamPoints;
+        this.SoccerTeam = [11]; // this creates 11 teams
+      }
+    }
+
+    class Person {
+      constructor(sFirstName, sLastName) {
+        super();
+        this.sFirstName = sFirstName;
+        this.sLastName = sLastName;
+      }
+    }
+
+    class SoccerCoach extends Person {
+      constructor(sFirstNameCoach, sLastNameCoach, iCareerWins, iCareerLosses, fWinPercent) {
+        super(sFirstNameCoach, sLastNameCoach); //call from other class
+        this.iCareerWins = iCareerWins;
+        this.iCareerLosses = iCareerLosses;
+        this.fWinPercent = fWinPercent;
+      }
+
+    }
+
+    class SoccerPlayer extends Person {
+      constructor(iGoals_scored, iShots) {
+        super();
+        this.iGoals_scored = iGoals_scored;
+        this.iShots = iShots;
+
+      }
+    }
+
+    let oTeam1 = new Team("Jennifer", "Rockwood", BYU, 91, 72);
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,110 @@
+<!-- Caleb Hanssen
+Section 4 - Exam 2  create a form 
+First Name
+Last Name
+Password
+Date of birth (minimum date of Jan 1st, 1950 and max date of current date)
+Overall GPA (stored as a float)
+Gender (Male, Female, or Other) with the values being M, F, or O (default to Male)
+Ask them if they want to receive emails (default to Y)-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TEST2</title>
+</head>
+
+<body onload="clearData()">
+
+  <form id="myForm">
+    <fieldset style="width: 0px;">
+      <legend style="text-align: center;">Student Info</legend>
+      <label for="FirstName">First Name:</label>
+      <input type="text" id="FirstName" required autofocus>
+
+      <br> <br>
+
+      <label for="LastName">Last Name</label>
+      <input type="text" id="LastName" required>
+
+      <br><br>
+      <label for="Password">Password</label>
+      <input type="password" id="Password">
+
+      <label for="DOB">Date of Birth</label>
+      <input type="date" id="DOB" min="1950-01-01" max="">
+
+      <br><br>
+      <label for="OverallGPA">Overall GPA</label>
+      <input type="number" id="GPA" min="0.00" max="4.00">
+
+      <br><br>
+      <select name="gender" id="listGender">
+        <option value="M">Male</option>
+        <option value="F">Female</option>
+        <option value="O">Other</option>
+      </select>
+    </fieldset>
+
+    <br><br>
+    <label for="emails">Do you want to receive emails?</label> <br>
+    <input type="radio" id="Y" value="Yes">Yes<br>
+    <input type="radio" id="N" value="No">No<br>
+    <br><br>
+
+    <button type="button" onclick="storeData()">Save</button>
+    <button type="button" onclick="displayData()">Display</button>
+  </form>
+
+  <p id="first"></p>
+  <p id="last"></p>
+  <p id="pass"></p>
+  <p id="bdate"></p>
+  <p id="gpascore"></p>
+  <p id="yourgender"></p>
+
+  <p id="sOutput"></p>
+
+  <script>
+    // attempt to However, make sure that the first name and last name have values BEFORE you store it. Display a message saying they have to enter information and position the cursor on the first control missing the information.
+    function checkValue(FirstName, LastName) {
+      if (value == "") {
+        alert("You must enter a first and last name");
+        document.getElementById(FirstName.focus());
+        return true;
+      }
+    }
+
+    //store data to local storage
+    function storeData() {
+      localStorage.setItem("fname", document.getElementById("FirstName").value)
+      localStorage.setItem("lname", document.getElementById("LastName").value)
+      localStorage.setItem("pword", document.getElementById("Password").value)
+      localStorage.setItem("birth", document.getElementById("DOB").value)
+      localStorage.setItem("gpa", document.getElementById("OverallGPA").value)
+      localStorage.setItem("gend", document.getElementById("gender").value)
+    }
+
+    //show data output on ptags
+    function displayData() {
+      document.getElementById("first").innerHTML = "First Name = " + localStorage.getItem("fname");
+      document.getElementById("last").innerHTML = "Last Name = " + localStorage.getItem("lname");
+      document.getElementById("pass").innerHTML = "Password = " + localStorage.getItem("pword");
+      document.getElementById("bdate").innerHTML = "Date of Birth = " + localStorage.getItem("birth");
+      document.getElementById("gpascore").innerHTML = "Gpa Score = " + localStorage.getItem("gpa");
+      document.getElementById("yourgender").innerHTML = "Your Gender = " + localStorage.getItem("gend");
+    }
+
+    // clear and the data from local storage and the page
+    function clearData() {
+      localStorage.clear();
+
+      document.getElementById("myForm").reset();
+    }
+  </script>
+</body>
+
+</html>

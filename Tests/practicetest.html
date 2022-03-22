@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <!--Let's Play Ball! I want you to create the object oriented source code to represent the following  "A baseball team has and is ...":
+    
+Create a Team class. This class will have attributes to store the team name (string), wins (int), losses (int), coach name(first and last with both being strings).
+The coach is an object from the BaseballCoach class.
+
+Create a BaseballTeam class. This class inherits from the Team class and have the attributes of team batting average (float), pitching average (float)
+
+Create a Person class with the attributes of first and last names (strings).
+
+Create a BaseballCoach class which inherits from the Person class and has the attributes of career wins (int) and career losses (int) and win/loss pct (float).
+
+Create BaseballPlayer class which inherits from the Person class and has the attribute of batting average (float) and home runs (int)
+
+Each class constructor should receive all attributes for their class and make the necessary calls to the parent.
+
+The Team class should have a method that returns the string that is built using the team name attribute concatenated with the wins, losses, and coach name attributes. 
+For example, "The Rockies have won 91 games and lost 72 games and their coach is Bud Black" where Rockies is the team name attribute, 91 is the wins attribute, 72 is 
+the losses attribute, and Bud Black is the coaches name attribute. You are NOT returning that literal string but instead dynamically building the string using the
+ values from the attributes.
+-->
+  <script>
+    class Team {
+      constructor(sTeamName, iWins, iLosses) {
+        this.sTeamName = sTeamName;
+        this.iWins = 0;
+        this.iLosses = 0;
+        this.sFirstNameCoach = "";
+        this.sLastNameCoach = "";
+      }
+
+      method() //method that returns a string of team name, wins, losses, coach name
+      {
+        return ("The" + this.sTeamName + "have won" + this.iWins + " games and lost " + this.iLosses +
+          "games and their coach is" + this.sFirstName + this.sLastNameCoach)
+      }
+    }
+
+    class BaseballTeam extends Team {
+      constructor(fBatAvg, fPitchingAvg) {
+        super();
+        this.iTeamBAvg = 0;
+        this.fPitchingAvg = 0;
+      }
+    }
+
+    class Person {
+      constructor(sFirstName, sLastName) {
+        super();
+        this.sFirstName = sFirstName;
+        this.sLastName = sLastName;
+      }
+    }
+
+    class BaseballCoach extends Person {
+      constructor(iCareerWins, iCareerLosses, fWinPercent) {
+        super();
+        this.iCareerWins = 0;
+        this.iCareerLosses = 0;
+        this.fWinPercent = 0;
+      }
+
+    }
+
+    class BaseballPlayer extends Person {
+      constructor(fBatAvg, iHomeRuns) {
+        this.iPlayerBAvg;
+        this.iHomeRuns;
+      }
+    }
+  </script>
+
+
+
+  <form></form>
+  <label for="FirstName">First Name:</label>
+  <input type="text" id="FirstName" autofocus>
+
+  <br> <br>
+
+  <label for="FullName1">Last Name</label>
+  <input type="text" id="FullName1">
+
+  <br><br>
+  <label for="FullName2">Password</label>
+  <input type="text" id="FullName2">
+</body>
+
+
+</html>

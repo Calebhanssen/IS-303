@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+
+  <form>
+    <fieldset>
+      <legend>Customer Information:</legend>
+      <label for="custID">ID:</label>
+      <input type="number" id="custID" value="0">
+      <br>
+      <label for="custName">Full Name:</label>
+      <input type="text" id="custName">
+      <br>
+      <label for="custAcct">Account:</label>
+      <input type="text" id="custAcct" onkeyup="capIt(this)">
+      <br>
+      <label for="custBal">Balance:</label>
+      <input type="number" id="custBal" value="0">
+      <br><br>
+      <button type="button" onclick="storeData();">Add Customer</button>
+    </fieldset>
+  </form>
+  <p id="myOutput"></p>
+
+
+  <script>
+    function capIt(oInput) {
+      if (oInput.value.length == 1) {
+        oInput.value = oInput.value.chartAt(0).toUpperCase();
+        document.getElementById("custAcct").value = oInput.value;
+      }
+    }
+
+    function storeData() {
+      let oCustomer = new Customer(parseInt(document.getElementById("custID").value),
+        document.getElementById("custName").value,
+        document.getElementById("custAcct").value,
+        parseFloat(document.getElementById("custBal").value))
+
+      document.getElementById("myOutput").innerHTML = oCustomer.getCustomerInfo();
+    }
+
+    class Customer {
+      static companyName = "Fastforward Movies";
+
+      constructor(iID, sName, sAcct, fBal) {
+        this.custID = iID;
+        this.custName = sName;
+        this.custAcct = sAcct;
+        this.balance = fBal;
+
+      }
+
+      getCustomerInfo() {
+        return (this.custName + " &" + this.balance);
+      }
+
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <form>
+    <fieldset style="width: 0px;">
+      <legend>Customer Information</legend>
+      <label for="custID">ID:</label>
+      <input type="number" id="custID" value="0">
+      <br>
+      <label for="custName">Full Name:</label>
+      <input type="text" id="custName" onkeyup="this.value = this.value.toUpperCase();">
+      <br>
+      <label for="custAcct">Account:</label>
+      <input type="text" id="custAcct" onkeyup="capIt(this)">
+      <br>
+      <label for="custBal">Balance:</label>
+      <input type="number" id="custBal" value="0">
+      <br><br>
+      <fieldset style="width: 150px;">
+        <legend>Account Rating</legend>
+        <input type="radio" id="rbPoor" name="acctRating" value="Poor">
+        <label for="rbPoor">Poor</label><br>
+        <input type="radio" id="rbAverage" name="acctRating" value="Average" checked>
+        <label for="rbAverage">Average</label><br>
+        <input type="radio" id="rbExcellent" name="acctRating" value="Excellent">
+        <label for="rbExcellent">Excellent</label><br>
+      </fieldset>
+      <br><br>
+      <button type="button" onclick="storeData();">Add Customer</button>
+    </fieldset>
+  </form>
+
+  <p id="myOutput"></p>
+
+  <script>
+    function getRating() {
+      let sReturn;
+
+      if (document.getElementById("rbPoor").checked) {
+        sReturn = document.getElementById("rbPoor").value;
+      } else if (document.getElementById("rbAverage").checked) {
+        sReturn = document.getElementById("rbAverage").value;
+      } else {
+        sReturn = document.getElementById("rbExcellent").value;
+      }
+
+      return sReturn;
+    }
+
+    function capIt(oInput) {
+      if (oInput.value.length == 1) {
+        oInput.value = onInput.value.charAt(0).toUpperCase();
+      }
+    }
+
+    function storeData() {
+      let oCustomer = new Customer(parseInt(document.getElementById("custID").value),
+        document.getElementById("custName").value,
+        document.getElementById("custAcct").value,
+        parseFloat(document.getElementById("custBal").value))
+      getRating();
+
+      document.getElementById("myOutput").innerHTML = oCustomer.getCustomerInfo();
+    }
+
+    class Person {
+
+      constructor(sName) {
+        this.name = sName;
+      }
+    }
+
+    class Customer extends Person {
+      static companyName = "Fastforward Movies";
+
+      #
+      acctRating;
+
+      constructor(iID, sName, sAcct, fBal, sRating) {
+        super(sName);
+        this.custID = iID;
+        this.custAcct = sAcct;
+        this.balance = fBal;
+        this.#acctRating = sRating
+
+      }
+
+      getAcctRating() {
+        return this.#acctRating;
+      }
+
+      setAcctRating(sRating) {
+        this.#acctRating = sRating;
+      }
+
+      getCustomerInfo() {
+        return (this.name + " has a balance of &" + this.balance + " with rating of " + this.#acctRating);
+      }
+
+    }
+  </script>
+</body>
+
+</html>
