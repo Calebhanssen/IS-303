@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <p>Here is the Data</p>
+  <script>
+    var json_data = [{
+        "UserID": 1,
+        "UserName": "rooter",
+        "Password": "12345",
+        "Country": "UK",
+        "Email": "sac@gmail.com"
+      },
+      {
+        "UserID": 2,
+        "UserName": "binu",
+        "Password": "123",
+        "Country": "uk",
+        "Email": "Binu@gmail.com"
+      },
+      {
+        "UserID": 3,
+        "UserName": "cal",
+        "Password": "123",
+        "Country": "uk",
+        "Email": "cal@gmail.com"
+      },
+      {
+        "UserID": 4,
+        "UserName": "nera",
+        "Password": "1234",
+        "Country": "uk",
+        "Email": "nera@gmail.com"
+      }
+    ];
+    document.write("<table border='1'>"); // opening table
+    document.write("<thead>"); // opening head
+    document.write("<tr>"); // opening row
+    for (key in json_data[0]) {
+      document.write("<td>" + key + "</td>")
+    }
+    document.write("</tr>"); // closing row
+    document.write("</thead>"); // closing head
+    document.write("<tbody>"); // opening body
+    for (let iRow = 0; iRow < json_data.length; iRow++) {
+      document.write("<tr>");
+      document.write("<td>" + json_data[iRow].UserID + "</td>");
+      document.write("<td>" + json_data[iRow].UserName + "</td>");
+      document.write("<td>" + json_data[iRow].Password + "</td>");
+      document.write("<td>" + json_data[iRow].Country + "</td>");
+      document.write("<td>" + json_data[iRow].Email + "</td>");
+      document.write("</tr>")
+    }
+    document.write("</tbody>"); // closing body
+    document.write("</table>"); // closing table
+  </script>
+</body>
+
+</html>
