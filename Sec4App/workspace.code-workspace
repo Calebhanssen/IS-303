@@ -1,0 +1,12 @@
+{
+  "folders": [
+	{
+		"name": "APPS",
+		"path": "../APPS"
+	},
+	{
+		"name": "Sec4App",
+		"path": "."
+	}
+]
+}
