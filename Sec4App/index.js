@@ -8,13 +8,19 @@ const port = 3000;
 
 app.use(express.urlencoded({ extended: true }));
 
-app.get("/", (req, res) => res.send("Welcome to my life"));
-
+app.get("/", (req, res) => res.send("Welcome to the Thunderdome!"));
 app.get("/about", (req, res) => res.redirect("https://www.byu.edu"));
-
 app.get("/employee", (req, res) => {
-  console.log("Callling the employee");
-  res.sendFile(path.join(__dirname + "/testdata.html"));
+  console.log("In the employee");
+  res.sendFile(path.join(__dirname + "/testData.html"));
 });
 
-app.listen(port, () => console.log("I am listening :)"));
+app.get("/storeIt", (req, res) => {
+  res.sendFile(path.join(__dirname + "/getData.html"));
+});
+
+app.post("/storeIt", (req, res) => {
+  res.send("Stored Data!" + req.body.lname);
+});
+
+app.listen(port, () => console.log("I am listening!"));
