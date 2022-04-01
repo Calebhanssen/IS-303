@@ -8,6 +8,8 @@ const port = 3000;
 
 app.use(express.urlencoded({ extended: true }));
 
+app.set("view engine", "ejs");
+
 app.get("/", (req, res) => res.send("Welcome to the Thunderdome!"));
 app.get("/about", (req, res) => res.redirect("https://www.byu.edu"));
 app.get("/employee", (req, res) => {
@@ -21,6 +23,11 @@ app.get("/storeIt", (req, res) => {
 
 app.post("/storeIt", (req, res) => {
   res.send("Stored Data!" + req.body.lname);
+});
+
+app.get("/displayName", (req, res) => {
+  let aNames = ["Cougars", "Spam", "Bacon"];
+  res.render("displayName", { name: "Cougars" });
 });
 
 app.listen(port, () => console.log("I am listening!"));
