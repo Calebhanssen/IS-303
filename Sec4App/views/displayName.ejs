@@ -9,7 +9,10 @@
 </head>
 
 <body>
-  <label>We love <%= name %></label>
+  <% for (let iCount = 0; iCount < name.length; iCount++) { %>
+  <label><%= name[iCount].first_name %> <%= name[iCount].last_name %></label>
+  <br><br>
+  <% } %>
 </body>
 
 </html>

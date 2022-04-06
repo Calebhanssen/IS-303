@@ -8,6 +8,17 @@ const port = 3000;
 
 app.use(express.urlencoded({ extended: true }));
 
+const knex = require("knex")({
+  client: "pg",
+  connection: {
+    host: "localhost",
+    user: "postgres",
+    password: "Wtmcac99",
+    database: "Company",
+    port: 5432,
+  },
+});
+
 app.set("view engine", "ejs");
 
 app.get("/", (req, res) => res.send("Welcome to the Thunderdome!"));
@@ -26,8 +37,14 @@ app.post("/storeIt", (req, res) => {
 });
 
 app.get("/displayName", (req, res) => {
-  let aNames = ["Cougars", "Spam", "Bacon"];
-  res.render("displayName", { name: "Cougars" });
+  // let aNames = ["Cougars", "Spam", "Bacon"];
+  // res.render("displayName", { name: "Cougars" });
+  knex
+    .select()
+    .from("employee")
+    .then((emp) => {
+      res.render("displayName", { name: emp });
+    });
 });
 
 app.listen(port, () => console.log("I am listening!"));
