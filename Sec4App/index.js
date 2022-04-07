@@ -41,9 +41,34 @@ app.get("/displayName", (req, res) => {
   // res.render("displayName", { name: "Cougars" });
   knex
     .select()
-    .from("employee")
+    .from("employee") //specify table name
     .then((emp) => {
-      res.render("displayName", { name: emp });
+      // emp throw it into the variable
+      res.render("displayName", { name: emp }); // respond and package it up. displayname.ejs found in views folder and the emp data attach it to key name
+    })
+    .catch((err) => {
+      // if there is a problem send it to the catch method.
+      console.log(err);
+      res.status(500).json({ err });
+    });
+});
+
+//first()
+
+app.get("/getName/:firstName", (req, res) => {
+  // var sSearch = req.params.firstName.charAt(0).toUpperCase() + req.params.first
+  knex
+    .select("first_name", "last_name")
+    .from("employee")
+    .where("first_name", req.params.firstName.toUpperCase())
+    .first()
+    .then((emp) => {
+      // returns an array to the emp file. Make sure to use square brackets in
+      res.render("findName", { name: emp });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({ err }); // change to res.send file to send html error file.
     });
 });
 
