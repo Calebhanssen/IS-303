@@ -10,6 +10,7 @@ app.use(express.urlencoded({ extended: true }));
 
 const knex = require("knex")({
   client: "pg",
+  version: "13.6",
   connection: {
     host: "localhost",
     user: "postgres",
@@ -41,7 +42,7 @@ app.get("/displayName", (req, res) => {
   // res.render("displayName", { name: "Cougars" });
   knex
     .select()
-    .from("employee") //specify table name
+    .from("employee")
     .then((emp) => {
       // emp throw it into the variable
       res.render("displayName", { name: emp }); // respond and package it up. displayname.ejs found in views folder and the emp data attach it to key name
@@ -57,12 +58,7 @@ app.get("/displayName", (req, res) => {
 
 app.get("/getName/:firstName", (req, res) => {
   // var sSearch = req.params.firstName.charAt(0).toUpperCase() + req.params.first
-  knex
-    .select("first_name", "last_name")
-    .from("employee")
-    .where("first_name", req.params.firstName.toUpperCase())
-    .first()
-    .then((emp) => {
+  knex.select("first_name", "last_name").from("employee").where("first_name", req.params.firstName.toUpperCase()).first().then((emp) => {
       // returns an array to the emp file. Make sure to use square brackets in
       res.render("findName", { name: emp });
     })
