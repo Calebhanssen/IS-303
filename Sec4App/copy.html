@@ -1,0 +1,66 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <form action="/editVictim" method="GET">
+            <fieldset style="width: 0px;">
+                <legend>Find a Victim:</legend>
+                    <br>
+                    <label for="first_name">Enter a first name:</label>
+                    <br>
+                    <input type="text" id="first_name" name="first_name">
+                    <br><br>
+                    <button type="submit">Search</button>
+            </fieldset>
+        </form>
+    </body>
+</html>   -->
+
+    <!DOCTYPE html>
+        <html lang="en">
+            <head>
+                <meta charset="UTF-8">
+                <meta http-equiv="X-UA-Compatible" content="IE=edge">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>Document</title>
+            </head>
+            <body>
+                <form action="/editBand" method="POST">
+                    <fieldset style="width: 0px;">
+                        <legend>Edit Victim:</legend>
+                            <input type="hidden" id="victim_id" name="victim_id" value="<%= myVictims[0].victim_id %>">
+
+                            <label for="date_missing">Date missing:</label>
+                            <input type="text" id="date_missing" name="date_missing" value="<%= myVictims[0].date_missing %>">
+
+                            <label for="last_name">Last name:</label>
+                            <input type="text" id="last_name" name="last_name" value="<%= myVictims[0].last_name %>">
+
+                            <label for="first_name">First name:</label>
+                            <input type="text" id="first_name" name="first_name" value="<%= myVictims[0].first_name %>">
+                
+                            <label for="age_at_missing">Age at Missing:</label>
+                            <input type="text" id="age_at_missing" name="age_at_missing" value="<%= myVictims[0].age_at_missing %>">
+
+                            <label for="city">City:</label>
+                            <input type="text" id="city" name="city" value="<%= myVictims[0].city %>">
+
+                            <label for="state">State:</label>
+                            <input type="text" id="state" name="state" value="<%= myVictims[0].state %>">
+
+                            <label for="gender">Gender:</label>
+                            <input type="text" id="gender" name="gender" value="<%= myVictims[0].gender %>">
+
+                            <label for="race">Race:</label>
+                            <input type="text" id="race" name="race" value="<%= myVictims[0].race %>">
+
+                            <button type="submit">Save</button>
+                    </fieldset>
+                </form>
+            </body>
+        </html>

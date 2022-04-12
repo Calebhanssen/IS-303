@@ -16,9 +16,11 @@ const knex = require("knex")({
     user: "postgres",
     password: "Wtmcac99",
     database: "Company",
-    port: 5432,
-  },
+    port: 5433,
+  }
 });
+
+console.log('connected');
 
 app.set("view engine", "ejs");
 
@@ -38,20 +40,12 @@ app.post("/storeIt", (req, res) => {
 });
 
 app.get("/displayName", (req, res) => {
-  // let aNames = ["Cougars", "Spam", "Bacon"];
-  // res.render("displayName", { name: "Cougars" });
-  knex
-    .select()
-    .from("employee")
-    .then((emp) => {
-      // emp throw it into the variable
-      res.render("displayName", { name: emp }); // respond and package it up. displayname.ejs found in views folder and the emp data attach it to key name
-    })
-    .catch((err) => {
-      // if there is a problem send it to the catch method.
+  knex.select().from("employee").then((emp) => {
+      res.render("displayName", { name: emp });
+  }).catch((err) => {
       console.log(err);
       res.status(500).json({ err });
-    });
+  });
 });
 
 //first()
